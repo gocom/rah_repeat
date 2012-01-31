@@ -1,105 +1,121 @@
 <?php	##################
 	#
 	#	rah_repeat-plugin for Textpattern
-	#	version 0.6
+	#	version 0.7
 	#	by Jukka Svahn
 	#	http://rahforum.biz
 	#
-	###################
+	#	Copyright (C) 2011 Jukka Svahn <http://rahforum.biz>
+	#	Licensed under GNU Genral Public License version 2
+	#	http://www.gnu.org/licenses/gpl-2.0.html
+	#
+	##################
 
 	function rah_repeat($atts,$thing='') {
+		global $rah_repeat;
+		
 		extract(lAtts(array(
 			'delimiter' => ',',
 			'value' => '',
-			'limit' => '',
+			'limit' => NULL,
 			'offset' => 0,
 			'wraptag' => '',
 			'break' => '',
 			'class' => '',
 			'duplicates' => 0,
 			'sort' => '',
-			'exclude' => ''
+			'exclude' => '',
+			'trim' => 0
 		),$atts));
 
-		$values = explode($delimiter,$value);
+		$values = explode($delimiter, $value);
+		
+		if($trim == 1)
+			$values = doArray($values, 'trim');
 		
 		if($duplicates == 1)
 			$values = array_unique($values);
 		
 		if(!empty($exclude)) {
-			$exclude = explode($delimiter,$exclude);
-			$values = array_diff($values,$exclude);
+			$exclude = explode($delimiter, $exclude);
+			
+			if($trim == 1)
+				$exclude = doArray($exclude, 'trim');
+			
+			$values = array_diff($values, $exclude);
 		}
 		
-		$count = count($values);
-		
-		if($count == 0)
+		if(empty($values))
 			return;
 		
 		if(!empty($sort)) {
-			$sort = explode(' ',$sort);
-			switch($sort[0]) {
-				case 'numeric':
-					sort($values,SORT_NUMERIC);
-					break;
-				case 'string':
-					sort($values,SORT_STRING);
-					break;
-				case 'locale':
-					sort($values,SORT_STRING);
-					break;
-				default:
-					sort($values,SORT_REGULAR);
-			}
-			if(isset($sort[1]) && $sort[1] == 'desc') 
+			list($crit, $dir) = explode(' ', $sort);
+			
+			if($crit == 'numeric')
+				sort($values, SORT_NUMERIC);
+			elseif($crit == 'string')
+				sort($values, SORT_STRING);
+			elseif($crit == 'locale')
+				sort($values, SORT_LOCALE_STRING);
+			else
+				sort($values, SORT_REGULAR);
+			
+			if($dir == 'desc') 
 				$values = array_reverse($values);
 		}
-		
+
+		$values = array_slice($values, $offset, $limit);
+		$count = count($values);
+
 		$i = 0;
 		$out = array();
-		
-		global $rah_repeat;
+
 		foreach($values as $string) {
 			$i++;
-			if($i <= $offset)
-				continue;
-			
-			$first = (!isset($first)) ? true : false;
-			$last = ($count == $i or $limit == $i) ? true : false;
-			$old = $rah_repeat;
+			$parent = $rah_repeat;
 
 			$rah_repeat = 
 				array(
 					'string' => $string,
-					'first' => $first,
-					'last' => $last,
-				)
-			;
+					'first' => ($i == 1),
+					'last' => ($count == $i),
+				);
 
 			$out[] = parse($thing);
-			$rah_repeat = $old;
-			if($last == true)
-				break;
+			$rah_repeat = $parent;
 		}
-		unset(
-			$rah_repeat
-		);
-		return 
-			doWrap($out,$wraptag,$break,$class)
-		;
+
+		unset($rah_repeat);
+		return doWrap($out,$wraptag,$break,$class);
 	}
+
+/**
+	Returns current value
+	@return mixed
+*/
 
 	function rah_repeat_value($atts,$thing='') {
 		global $rah_repeat;
 		return $rah_repeat['string'];
 	}
 
+/**
+	Conditional tag for testing if the item is first
+	@return string User-markup
+*/
+
 	function rah_repeat_if_first($atts,$thing='') {
 		global $rah_repeat;
 		return parse(EvalElse($thing,$rah_repeat['first'] == true));
 	}
 
+/**
+	Conditional tag for testing if the item is last
+	@return string User-markup
+*/
+
 	function rah_repeat_if_last($atts,$thing='') {
 		global $rah_repeat;
 		return parse(EvalElse($thing,$rah_repeat['last'] == true));
-	} ?>
+	}
+?>

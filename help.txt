@@ -2,8 +2,8 @@ h1. rah_repeat
 
 p. Split, loop and repeat a value by value. With this "Textpattern":http://www.textpattern.com plugin, you can turn a simple list of values into advanced HTML output. Split markup half, and represent halves in different places on the page. Do more, use less code by using the same code again.
 
-* Version: 0.6
-* Updated: 2010/05/09 03:00 AM UTC
+* Version: 0.7
+* Updated: 2011/12/02 11:00 AM UTC
 
 h3. Table of Contents
 
@@ -16,54 +16,58 @@ h3. Table of Contents
 h3(#list-of-features). List of features
 
 * Split list of values into tiny blocks and represent them individually.
-* Exclude values, remove dublicates.
+* Exclude values, remove duplicates.
 and do custom lists.
 
 h3(#requirements). Requirements
 
-* PHP 4.3.0+
-* Textpattern 4.x.x+
+* PHP 4.4.0 or newer.
+* Textpattern 4.0.7 or newer.
 
 Recommended:
 
-* Textpattern 4.0.8+
+* Textpattern 4.4.1 or newer.
 
 h3(#installation-and-usage). Installation and usage
 
 p. The general behavior stands: paste plugin code to the plugin installer textarea and run the automatic setup. Then just activate the plugin and you are ready to use new tags that plugin includes like others.
 
-p. Basically just put wrap (contain) content in your pages/forms/articles with @<txp:rah_repeat></txp:rah_repeat>@ container tags, and customize output with your desired attributes. Contained content will be repeated and suplied with defined value(s).
+p. Basically just put wrap (contain) content in your pages/forms/articles with @<txp:rah_repeat></txp:rah_repeat>@ container tags, and customize output with your desired attributes. Contained content will be repeated and supplied with defined value(s).
 
 h3(#attributes). Attributes
 
 p. The main container tag is @<txp:rah_repeat>@ and attributes for it follow.
 
 p. *value*
-Value to be split and suplied. Default is unset.
+Sets the values that are passed to the tag.
 Example: @value="dog,cat,human"@ Default: @""@
 
 p. *delimiter*
-Delimiter used to split the defined @value@ into multiple values. Default is comma.
+Sets the delimiter used to split the provided @value@ into list of multiple values. Default delimiter is comma (@,@).
 Example: @delimiter="|"@ Default: @","@
 
 p. *duplicates*
-Remove dublicate values from the list. If the attribute is set to @1@, only first appearance of the value is used, duplicates are stripped out. Default is 0, duplicates are not removed.
-Example: @dublicates="1"@ Default: @"0"@.
+Removes duplicate values from the list. If the attribute is set to @1@, only first appearance of the value is used, duplicates are stripped off. Default is @0@, duplicates are not removed.
+Example: @duplicates="1"@ Default: @"0"@.
 
 p. *exclude*
-Exclude certain values from the list. Comma (or @delimiter@) seperated list if multiple. Default is unset (@""@), nothing is excluded.
+Exclude certain values from the list. Comma (or @delimiter@, if @delimiter@ is changed) separated list of values if multiple. Default is unset (@""@), and nothing is excluded.
 Example: @exclude="foo,bar"@ Default: @""@
 
+p. *trim*
+If set to @1@, the provided values are trimmed from surrounding extra whitespace (spaces, line-breaks). This can be helpful if the provided values are from user-input (i.e. from article field), or the values just have extra whitespace, and the resulting output has to be clean (i.e. posed to XML, JavaScript, or to a "variable":http://textpattern.net/wiki/index.php?title=variable for comparison). By default the option is off, and values are not trimmed.
+Example: @trim="1"@ Default: @0@
+
 p. *sort*
-Sort the values. If the attribute is used, all values are rearranged to correct order. Allowed values: @regular@ (sorts without checking type), @numeric@ (sort in numeric order), @string@ (sort as strings) and @locale@ (sort according locale settings), and appending order @desc@ and @asc@. Default is unset (@""@), values are returned in the order they are feeded.
-Example: @regular asc@. Default: @""@.
+Sort the values. If the attribute is used, all values are rearranged to the specified order. Allowed values are @regular@ (sorts without checking type), @numeric@ (sorts in numeric order), @string@ (sort as strings) and @locale@ (sort according server's locale settings), followed by sorting order, either @desc@ and @asc@. Default the option isn't used (unset), and the values are returned in the order they were supplied.
+Example: @sort="regular asc"@. Default: @""@.
 
 p. *offset*
-The number of items to skip. Default is @0@, no offset is being used.
+The number of items to skip. Default is @0@, no offset is used.
 Example: @offset="5"@ Default: @"0"@
 
 p. *limit*
-The number of items to display. Note that skipped items (@offset@ option) are count into the limit. Default is unset, no limit is being used.
+The number of items to display. By default not limit is used.
 Example: @limit="10"@ Default: @""@
 
 p. *wraptag*
@@ -78,16 +82,16 @@ p. *class*
 The (X)HTML class applied to the wraptag. Default is unset.
 Default: @class=""@ Example: @"plugin"@
 
-p. The plugins has three more extra tags:
+p. The plugins has three more extra tags. None of extra the tags have attributes, and should be used wrapped inside @<txp:rah_repeat></txp:rah_repeat>@ tags. The tags are as follows.
 
 p. @<txp:rah_repeat_value />@
-Is a single tag. It has no attributes. It's used to deliver split values. See examples.
+Is a single tag, and has no attributes. It's used to display the provided values, and should be used wrapped inside @<txp:rah_repeat></txp:rah_repeat>@ tags. See examples for some usage instructions.
 
 p. @<txp:rah_repeat_if_first>@
-Is a container tag. It has no attributes. Returns contained statement if the current item is the first item.
+Is a container tag, and has no attributes. Returns contained statement if the current item is the first item.
 
 p. @<txp:rah_repeat_if_last>@
-Is a container tag. It has no attributes. Returns contained statement if the current item is the last item.
+Is a container tag, and has no attributes. Returns contained statement if the current item is the last item.
 
 h3(#example). Examples
 
@@ -103,7 +107,7 @@ h3(#example). Examples
 
 p(#example-1). *Example #1: Simple usage.*
 
-p. This example turns simple comma seperated list of @dog,cat,human@ into a HTML list.
+p. This example turns simple comma separated list of @dog,cat,human@ into a HTML list.
 
 bc. <txp:rah_repeat wraptag="ul" break="li" value="dog,cat,human">
 	A <txp:rah_repeat_value />.
@@ -117,13 +121,13 @@ bc. <ul>
 	<li>A human.</li>
 </ul>
 
-p(#example-2). *Example #2: Tag inside tags.*
+p(#example-2). *Example #2: Tags as values.*
 
-p. From Textpattern version 4.0.7 and above you can use tags within tags or tags as tag attributes values. We can use that as our weapon.
+p. As of Textpattern version 4.0.7, you can use tags inside tags.
 
-p. Let's say that you have comma seperated list of items stored inside article's custom field. For example, list of "Nameless" videservice's video IDs (@ID1,ID2,ID3,ID4@). Thus you need to render video player code for every ID.
+p. Let's say that you have comma separated list of items stored inside article's "custom field":http://textpattern.net/wiki/index.php?title=custom_field. For example, list of "Nameless" video service's video IDs (@ID1,ID2,ID3,ID4@), and you want to embed each of those as a playable video.
 
-p. We use @<txp:custom_field />@ tag as our id, and place the video player code inside the container:
+p. We pass the custom field hosting the video IDs to rah_repeat tag (with the @value@ attribute), and place the video player code inside the container:
 
 bc. <txp:rah_repeat value='<txp:custom_field name="MyCustomFieldName" />'>
 	<object width="600" height="380">
@@ -132,11 +136,11 @@ bc. <txp:rah_repeat value='<txp:custom_field name="MyCustomFieldName" />'>
 	</object>
 </txp:rah_repeat>
 
-Outputs 4 videoplayers.
+Above code would output 4 embedded players (one for each clip), displaying the videos specified with the custom field.
 
-p(#example-3). *Example #3: Using Offset and limit.*
+p(#example-3). *Example #3: Taking advantage of offset and limit.*
 
-p. First display two items, then some text between, two items more, some more text and then the rest of items.
+p. First display two items, then some text between, two more items, some more text and then the rest of the items.
 
 bc. <txp:rah_repeat value='<txp:custom_field name="MyCustomFieldName" />' limit="2">
 	<txp:rah_repeat_value />
@@ -160,7 +164,7 @@ bc. <txp:rah_repeat value="group1|item1|item2,group2|item1|item2">
 	</ul>
 </txp:rah_repeat>
 
-Returns:
+Returns two HTML lists:
 
 bc. <ul>
 	<li>group1</li>
@@ -173,32 +177,31 @@ bc. <ul>
 	<li>item2</li>
 </ul>
 
-p(#example-5). *Example #5: First and last.*
+p(#example-5). *Example #5: Basic usage of if_first and if_last.*
 
-bc. <txp:rah_repeat value="foo,bar">
-	<txp:rah_repeat_if_first>
-		<ul>
-	</txp:rah_repeat_if_first>
-	<li><txp:rah_repeat_value /></li>
-	<txp:rah_repeat_if_last>
-		</ul>
-	</txp:rah_repeat_if_last>
+p. With the conditional tags @<txp:rah_repeat_if_first />@ and @<txp:rah_repeat_if_last>@ we can test which value is the first and which is the last.
+
+bc. <txp:rah_repeat value="item1,item2,item3,item4,item5" wraptag="ul" break="li">
+	<txp:rah_repeat_if_first>First: </txp:rah_repeat_if_first>
+	<txp:rah_repeat_if_last>Last: </txp:rah_repeat_if_last>
+	<txp:rah_repeat_value />
 </txp:rah_repeat>
 
 Returns:
 
 bc. <ul>
-	<li>foo</li>
-	<li>bar</li>
+	<li>First: item1</li>
+	<li>item2</li>
+	<li>item3</li>
+	<li>item4</li>
+	<li>Last: item5</li>
 </ul>
 
-p(#example-6). *Example #6: Trim begining and ending whitespace from the value by using* "rah_function":http://rahforum.biz/plugins/rah_function.
+p(#example-6). *Example #6: Trim beginning and ending whitespace from the value*
 
-bc. <txp:rah_repeat value="foo, bar">
-	<txp:rah_function call="trim">
-		<txp:rah_repeat_value />
-	</txp:rah_function>
-</txp:rah_repeat>
+bc. <txp:rah_repeat value="foo, bar" trim="1" break=","><txp:rah_repeat_value /></txp:rah_repeat>
+
+Returns: @foo,bar@ (notice the missing space before bar).
 
 p(#example-7). *Example #7: Remove duplicate values*
 
@@ -226,10 +229,17 @@ p. Returns: @foobar@
 
 h3(#changelog). Changelog
 
+p. *Version 0.7*
+
+* Added attribute @trim@. When set to @1@, provided values are trimmed from surrounding whitespace.
+* Fixed: "locale" sorting option. Previously it sorted values as a string, not by locale options.
+* Changed: limit's default to NULL. Leave limit unset if you only want offset without limit, or use a high value.
+* Improved: Better offset and limit functionality. Now slices the list of values before staring to build the markup.
+
 p. *Version 0.6*
 
 * Added attribute: @exclude@.
-* Fixed unworking @<txp:rah_repeat_if_last>@ tag caused by v0.5 update.
+* Fixed non-working @<txp:rah_repeat_if_last>@ tag. Issue was caused by v0.5 update.
 
 p. *Version 0.5*
 
