@@ -1,7 +1,7 @@
 <?php	##################
 	#
 	#	rah_repeat-plugin for Textpattern
-	#	version 0.4
+	#	version 0.5
 	#	by Jukka Svahn
 	#	http://rahforum.biz
 	#
@@ -12,17 +12,41 @@
 			'delimiter' => ',',
 			'value' => '',
 			'limit' => '',
-			'offset' => '',
+			'offset' => 0,
 			'wraptag' => '',
 			'break' => '',
-			'class' => ''
+			'class' => '',
+			'duplicates' => 0,
+			'sort' => ''
 		),$atts));
 
 		$values = explode($delimiter,$value);
 		$count = count($values);
-
+		
 		if($count == 0)
-			return '';
+			return;
+		
+		if($duplicates == 1)
+			$values = array_unique($values);
+		
+		if(!empty($sort)) {
+			$sort = explode(' ',$sort);
+			switch($sort[0]) {
+				case 'numeric':
+					sort($values,SORT_NUMERIC);
+					break;
+				case 'string':
+					sort($values,SORT_STRING);
+					break;
+				case 'locale':
+					sort($values,SORT_STRING);
+					break;
+				default:
+					sort($values,SORT_REGULAR);
+			}
+			if(isset($sort[1]) && $sort[1] == 'desc') 
+				$values = array_reverse($values);
+		}
 		
 		$i = 0;
 		$out = array();
@@ -30,9 +54,9 @@
 		global $rah_repeat;
 		foreach($values as $string) {
 			$i++;
-			if(!empty($offset) && $i <= $offset)
+			if($i <= $offset)
 				continue;
-
+			
 			$first = (!isset($first)) ? true : false;
 			$last = ($count == $i or $limit == $i) ? true : false;
 			$old = $rah_repeat;

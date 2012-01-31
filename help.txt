@@ -2,8 +2,8 @@ h1. rah_repeat
 
 p. Split and repeat a value by value. Rah_repeat is a plugin for "Textpattern CMS":http://www.textpattern.com.
 
-* Version: 0.4
-* Updated: 2009/11/30 11:00 AM GMT+2
+* Version: 0.5
+* Updated: 2010/05/08 9:00 PM UTC
 
 h3. Table of Contents
 
@@ -28,17 +28,25 @@ h3(#attributes). Attributes
 
 p. The main container tag is @<txp:rah_repeat>@ and attributes for it follow.
 
-p. *delimiter*
-Delimiter used to split the defined @value@ into multiple values. Default is comma.
-Example: @delimiter="|"@ Default: @","@
-
 p. *value*
 Value to be split and suplied. Default is unset.
 Example: @value="dog,cat,human"@ Default: @""@
 
+p. *delimiter*
+Delimiter used to split the defined @value@ into multiple values. Default is comma.
+Example: @delimiter="|"@ Default: @","@
+
+p *duplicates*
+Remove dublicate values from the list. If the attribute is set to @1@, only first appearance of the value is used, duplicates are stripped out. Default is 0, duplicates are not removed.
+Example: @dublicates="1"@ Default: @"0"@.
+
+p. *sort*
+Sort the values. If the attribute is used, all values are rearranged to correct order. Allowed values: @regular@ (sorts without checking type), @numeric@ (sort in numeric order), @string@ (sort as strings) and @locale@ (sort according locale settings), and appending order @desc@ and @asc@. Default is unset (@""@), values are returned in the order they are feeded.
+Example: @regular asc@. Default: @""@.
+
 p. *offset*
-The number of items to skip. Default is unset, no offset is being used.
-Example: @offset="5"@ Default: @""@
+The number of items to skip. Default is @0@, no offset is being used.
+Example: @offset="5"@ Default: @"0"@
 
 p. *limit*
 The number of items to display. Note that skipped items (@offset@ option) are count into the limit. Default is unset, no limit is being used.
@@ -173,7 +181,29 @@ bc. <txp:rah_repeat value="foo, bar">
 	</txp:rah_function>
 </txp:rah_repeat>
 
+p. *Example #8: Remove duplicate values*
+
+bc. <txp:rah_repeat break="," value="foo,bar,bar,foo,bar,bar,foo,foobar">
+	<txp:rah_repeat_value />
+</txp:rah_repeat>
+
+p. Returns: @foo, bar, foobar@
+
+p. *Example #9: Arrange the values from lowest to highest*
+
+bc. <txp:rah_repeat break="," value="b,a,c," sort="regular asc">
+	<txp:rah_repeat_value />
+</txp:rah_repeat>
+
+p. Returns: @a, b, c@
+
 h3(#changelog). Changelog
+
+p. *Version 0.5*
+
+* Changed offsets default value from @unset@ to @0@.
+* Added attribute: @sort@.
+* Added attribute: @duplicates@.
 
 p. *Version 0.4*
 
