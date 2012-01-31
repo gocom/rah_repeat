@@ -2,7 +2,7 @@
 	##################
 	#
 	#	rah_repeat-plugin for Textpattern
-	#	version 0.2
+	#	version 0.3
 	#	by Jukka Svahn
 	#	http://rahforum.biz
 	#
@@ -13,7 +13,10 @@
 			'delimiter' => ',',
 			'value' => '',
 			'limit' => '',
-			'offset' => ''
+			'offset' => '',
+			'wraptag' => '',
+			'break' => '',
+			'class' => ''
 		),$atts));
 		
 		$values = explode($delimiter,$value);
@@ -36,10 +39,11 @@
 				break;
 		}
 		unset(
-			$rah_repeat,
-			$string
+			$rah_repeat
 		);
-		return implode('',$out);
+		return 
+			doWrap($out,$wraptag,$break,$class)
+		;
 	}
 
 	function rah_repeat_value($atts,$thing='') {

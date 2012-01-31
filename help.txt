@@ -2,8 +2,8 @@ h1. rah_repeat
 
 p. Split and repeat a value by value. Rah_repeat is a plugin for "Textpattern CMS":http://www.textpattern.com.
 
-* Version: 0.2
-* Updated: 2009/11/23 6:00 AM GMT+2
+* Version: 0.3
+* Updated: 2009/11/28 5:30 PM GMT+2
 
 h3. Table of Contents
 
@@ -43,6 +43,18 @@ Example: @offset="5"@ Default: @""@
 p. *limit*
 The number of items to display. Note that skipped items (@offset@ option) are count into the limit. Default is unset, no limit is being used.
 Example: @limit="10"@ Default: @""@
+
+p. *wraptag*
+The (X)HTML tag, without brackets used to wrap the output. Default is unset.
+Default: @wraptag=""@ Example: @"div"@
+
+p. *break*
+The (X)HTML tag (without brackets) or string to separate list items. Default is unset.
+Default: @break=""@ Example: @"br"@
+
+p. *class*
+The (X)HTML class applied to the wraptag. Default is unset.
+Default: @class=""@ Example: @"plugin"@
 
 p. The second tag, @<txp:rah_repeat_value />@ is a single tag. It has no attributes. It's used to deliver split values. See examples.
 
@@ -114,10 +126,16 @@ bc. <ul>
 
 h3(#changelog). Changelog
 
+p. *Version 0.3*
+
+* Added attribute: @wraptag@.
+* Added attribute: @break@.
+* Added attribute: @class@.
+
 p. *Version 0.2*
 
-* Added attribute @limit@.
-* Added attribute @offset@.
+* Added attribute: @limit@.
+* Added attribute: @offset@.
 
 p. *Version 0.1*
 
