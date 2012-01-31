@@ -1,7 +1,7 @@
 <?php	##################
 	#
 	#	rah_repeat-plugin for Textpattern
-	#	version 0.5
+	#	version 0.6
 	#	by Jukka Svahn
 	#	http://rahforum.biz
 	#
@@ -17,17 +17,24 @@
 			'break' => '',
 			'class' => '',
 			'duplicates' => 0,
-			'sort' => ''
+			'sort' => '',
+			'exclude' => ''
 		),$atts));
 
 		$values = explode($delimiter,$value);
+		
+		if($duplicates == 1)
+			$values = array_unique($values);
+		
+		if(!empty($exclude)) {
+			$exclude = explode($delimiter,$exclude);
+			$values = array_diff($values,$exclude);
+		}
+		
 		$count = count($values);
 		
 		if($count == 0)
 			return;
-		
-		if($duplicates == 1)
-			$values = array_unique($values);
 		
 		if(!empty($sort)) {
 			$sort = explode(' ',$sort);
