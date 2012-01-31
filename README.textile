@@ -2,24 +2,13 @@ h1. rah_repeat
 
 p. Split, loop and repeat a value by value. With this "Textpattern":http://www.textpattern.com plugin, you can turn a simple list of values into advanced HTML output. Split markup half, and represent halves in different places on the page. Do more, use less code by using the same code again.
 
-* Version: 0.7
-* Updated: 2011/12/02 11:00 AM UTC
-
-h3. Table of Contents
-
-* "Requirements":#requirements
-* "Installation and usage":#installation-and-usage
-* "Attributes":#attributes
-* "Examples":#example
-* "Changelog":#changelog
-
-h3(#list-of-features). List of features
+h2. List of features
 
 * Split list of values into tiny blocks and represent them individually.
 * Exclude values, remove duplicates.
 and do custom lists.
 
-h3(#requirements). Requirements
+h2. Requirements
 
 * PHP 4.4.0 or newer.
 * Textpattern 4.0.7 or newer.
@@ -28,13 +17,13 @@ Recommended:
 
 * Textpattern 4.4.1 or newer.
 
-h3(#installation-and-usage). Installation and usage
+h2. Installation and usage
 
 p. The general behavior stands: paste plugin code to the plugin installer textarea and run the automatic setup. Then just activate the plugin and you are ready to use new tags that plugin includes like others.
 
 p. Basically just put wrap (contain) content in your pages/forms/articles with @<txp:rah_repeat></txp:rah_repeat>@ container tags, and customize output with your desired attributes. Contained content will be repeated and supplied with defined value(s).
 
-h3(#attributes). Attributes
+h2. Attributes
 
 p. The main container tag is @<txp:rah_repeat>@ and attributes for it follow.
 
@@ -93,19 +82,9 @@ Is a container tag, and has no attributes. Returns contained statement if the cu
 p. @<txp:rah_repeat_if_last>@
 Is a container tag, and has no attributes. Returns contained statement if the current item is the last item.
 
-h3(#example). Examples
+h2. Examples
 
-* "Simple usage":#example-1
-* "Tags inside tags":#example-2
-* "Using offset and limit":#example-3
-* "Repeat inside repeat":#example-4
-* "First and last":#example-5
-* "Trim whitespace from the value":#example-6
-* "Remove duplicate values":#example-7
-* "Rearrange the list":#example-8
-* "Exclude values":#example-9
-
-p(#example-1). *Example #1: Simple usage.*
+h3. Simple usage example
 
 p. This example turns simple comma separated list of @dog,cat,human@ into a HTML list.
 
@@ -121,7 +100,7 @@ bc. <ul>
 	<li>A human.</li>
 </ul>
 
-p(#example-2). *Example #2: Tags as values.*
+h3. Using tags as values
 
 p. As of Textpattern version 4.0.7, you can use tags inside tags.
 
@@ -138,7 +117,7 @@ bc. <txp:rah_repeat value='<txp:custom_field name="MyCustomFieldName" />'>
 
 Above code would output 4 embedded players (one for each clip), displaying the videos specified with the custom field.
 
-p(#example-3). *Example #3: Taking advantage of offset and limit.*
+h3. Taking advantage of offset and limit attributes
 
 p. First display two items, then some text between, two more items, some more text and then the rest of the items.
 
@@ -154,7 +133,7 @@ bc. <txp:rah_repeat value='<txp:custom_field name="MyCustomFieldName" />' limit=
 	<txp:rah_repeat_value />
 </txp:rah_repeat>
 
-p(#example-4). *Example #4: Repeat inside repeat.*
+h3. Repeat inside repeat.
 
 bc. <txp:rah_repeat value="group1|item1|item2,group2|item1|item2">
 	<ul>
@@ -177,7 +156,7 @@ bc. <ul>
 	<li>item2</li>
 </ul>
 
-p(#example-5). *Example #5: Basic usage of if_first and if_last.*
+h3. Basic usage of if_first and if_last tags
 
 p. With the conditional tags @<txp:rah_repeat_if_first />@ and @<txp:rah_repeat_if_last>@ we can test which value is the first and which is the last.
 
@@ -197,13 +176,13 @@ bc. <ul>
 	<li>Last: item5</li>
 </ul>
 
-p(#example-6). *Example #6: Trim beginning and ending whitespace from the value*
+h3. Trim beginning and ending whitespace from the value
 
 bc. <txp:rah_repeat value="foo, bar" trim="1" break=","><txp:rah_repeat_value /></txp:rah_repeat>
 
 Returns: @foo,bar@ (notice the missing space before bar).
 
-p(#example-7). *Example #7: Remove duplicate values*
+h3. Remove duplicate values
 
 bc. <txp:rah_repeat break="," duplicates="1" value="foo,bar,bar,foo,bar,bar,foo,foobar">
 	<txp:rah_repeat_value />
@@ -211,7 +190,7 @@ bc. <txp:rah_repeat break="," duplicates="1" value="foo,bar,bar,foo,bar,bar,foo,
 
 p. Returns: @foo, bar, foobar@
 
-p(#example-8). *Example #8: Arrange the values from lowest to highest*
+h3. Arrange the values from lowest to highest
 
 bc. <txp:rah_repeat break="," value="b,a,c," sort="regular asc">
 	<txp:rah_repeat_value />
@@ -219,7 +198,7 @@ bc. <txp:rah_repeat break="," value="b,a,c," sort="regular asc">
 
 p. Returns: @a, b, c@
 
-p(#example-9). *Example #9: Exclude values*
+h3. Excluding values
 
 bc. <txp:rah_repeat value="foo,bar,foobar" exclude="foo,bar">
 	<txp:rah_repeat_value />
@@ -227,43 +206,43 @@ bc. <txp:rah_repeat value="foo,bar,foobar" exclude="foo,bar">
 
 p. Returns: @foobar@
 
-h3(#changelog). Changelog
+h2. Changelog
 
-p. *Version 0.7*
+h3. Version 0.7 - 2011/12/02
 
 * Added attribute @trim@. When set to @1@, provided values are trimmed from surrounding whitespace.
 * Fixed: "locale" sorting option. Previously it sorted values as a string, not by locale options.
 * Changed: limit's default to NULL. Leave limit unset if you only want offset without limit, or use a high value.
 * Improved: Better offset and limit functionality. Now slices the list of values before staring to build the markup.
 
-p. *Version 0.6*
+h3. Version 0.6 - 2010/05/09
 
 * Added attribute: @exclude@.
 * Fixed non-working @<txp:rah_repeat_if_last>@ tag. Issue was caused by v0.5 update.
 
-p. *Version 0.5*
+h3. Version 0.5 - 2010/05/08
 
-* Changed offsets default value from @unset@ to @0@.
+* Changed offset's default value from @unset@ to @0@.
 * Added attribute: @sort@.
 * Added attribute: @duplicates@.
 
-p. *Version 0.4*
+h3. Version 0.4 - 2009/11/30
 
 * Fixed: now returns old parent global, if two tags are used inside each other, instead of defining it empty.
 * Added: @<txp:rah_repeat_if_first>@.
 * Added: @<txp:rah_repeat_if_last>@.
 
-p. *Version 0.3*
+h3. Version 0.3 - 2009/11/28
 
 * Added attribute: @wraptag@.
 * Added attribute: @break@.
 * Added attribute: @class@.
 
-p. *Version 0.2*
+h3. Version 0.2 - 2009/11/23
 
 * Added attribute: @limit@.
 * Added attribute: @offset@.
 
-p. *Version 0.1*
+h3. Version 0.1 - 2009/11/20
 
-* First release
+* Initial release.
