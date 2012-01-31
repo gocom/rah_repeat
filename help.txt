@@ -2,8 +2,8 @@ h1. rah_repeat
 
 p. Split and repeat a value by value. Rah_repeat is a plugin for "Textpattern CMS":http://www.textpattern.com.
 
-* Version: 0.3
-* Updated: 2009/11/28 5:30 PM GMT+2
+* Version: 0.4
+* Updated: 2009/11/30 11:00 AM GMT+2
 
 h3. Table of Contents
 
@@ -56,7 +56,16 @@ p. *class*
 The (X)HTML class applied to the wraptag. Default is unset.
 Default: @class=""@ Example: @"plugin"@
 
-p. The second tag, @<txp:rah_repeat_value />@ is a single tag. It has no attributes. It's used to deliver split values. See examples.
+p. The plugins has three more extra tags:
+
+p. @<txp:rah_repeat_value />@
+Is a single tag. It has no attributes. It's used to deliver split values. See examples.
+
+p. @<txp:rah_repeat_if_first>@
+Is a container tag. It has no attributes. Returns contained statement if the current item is the first item.
+
+p. @<txp:rah_repeat_if_last>@
+Is a container tag. It has no attributes. Returns contained statement if the current item is the last item.
 
 h3(#example). Examples
 
@@ -124,7 +133,53 @@ bc. <ul>
 	<li>item2</li>
 </ul>
 
+p. *Example #5: First and last.*
+
+bc. <txp:rah_repeat value="foo,bar">
+	<txp:rah_repeat_if_first>
+		<ul>
+	</txp:rah_repeat_if_first>
+	<li><txp:rah_repeat_value /></li>
+	<txp:rah_repeat_if_last>
+		</ul>
+	</txp:rah_repeat_if_last>
+</txp:rah_repeat>
+
+Returns:
+
+bc. <ul>
+	<li>foo</li>
+	<li>bar</li>
+</ul>
+
+p. *Example #6: Wraptag and break.*
+
+bc. <txp:rah_repeat value="foo,bar" wraptag="ul" break="li">
+	<txp:rah_repeat_value />
+</txp:rah_repeat>
+
+Returns:
+
+bc. <ul>
+	<li>foo</li>
+	<li>bar</li>
+</ul>
+
+p. *Example #7: Trim begining and ending whitespace from the value by using* "rah_function":http://rahforum.biz/plugins/rah_function.
+
+bc. <txp:rah_repeat value="foo, bar">
+	<txp:rah_function call="trim">
+		<txp:rah_repeat_value />
+	</txp:rah_function>
+</txp:rah_repeat>
+
 h3(#changelog). Changelog
+
+p. *Version 0.4*
+
+* Fixed: now returns old parent global, if two tags are used inside each other, instead of defining it empty.
+* Added: @<txp:rah_repeat_if_first>@.
+* Added: @<txp:rah_repeat_if_last>@.
 
 p. *Version 0.3*
 

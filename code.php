@@ -1,8 +1,7 @@
-<?php
-	##################
+<?php	##################
 	#
 	#	rah_repeat-plugin for Textpattern
-	#	version 0.3
+	#	version 0.4
 	#	by Jukka Svahn
 	#	http://rahforum.biz
 	#
@@ -18,10 +17,11 @@
 			'break' => '',
 			'class' => ''
 		),$atts));
-		
+
 		$values = explode($delimiter,$value);
-		
-		if(count($values) == 0)
+		$count = count($values);
+
+		if($count == 0)
 			return '';
 		
 		$i = 0;
@@ -32,10 +32,22 @@
 			$i++;
 			if(!empty($offset) && $i <= $offset)
 				continue;
-			$rah_repeat = $string;
+
+			$first = (!isset($first)) ? true : false;
+			$last = ($count == $i or $limit == $i) ? true : false;
+			$old = $rah_repeat;
+
+			$rah_repeat = 
+				array(
+					'string' => $string,
+					'first' => $first,
+					'last' => $last,
+				)
+			;
+
 			$out[] = parse($thing);
-			$rah_repeat = '';
-			if(!empty($limit) && $i == $limit)
+			$rah_repeat = $old;
+			if($last == true)
 				break;
 		}
 		unset(
@@ -48,5 +60,15 @@
 
 	function rah_repeat_value($atts,$thing='') {
 		global $rah_repeat;
-		return $rah_repeat;
-	}?>
+		return $rah_repeat['string'];
+	}
+
+	function rah_repeat_if_first($atts,$thing='') {
+		global $rah_repeat;
+		return parse(EvalElse($thing,$rah_repeat['first'] == true));
+	}
+
+	function rah_repeat_if_last($atts,$thing='') {
+		global $rah_repeat;
+		return parse(EvalElse($thing,$rah_repeat['last'] == true));
+	} ?>
