@@ -1,0 +1,72 @@
+h1. rah_repeat
+
+p. Split and repeat a value.
+
+* Version: 0.1
+* Updated: 2009/11/20 6:30 PM GMT+2
+
+h3. Table of Contents
+
+* "Requirements":#requirements
+* "Installation and usage":#installation-and-usage
+* "Attributes":#attributes
+* "Examples":#example
+* "Changelog":#changelog
+
+h3(#requirements). Requirements
+
+* PHP 4.3.0+
+* Textpattern 4.x.x+
+
+h3(#installation-and-usage). Installation and usage
+
+p. The general behavior stands: paste plugin code to the plugin installer textarea and run the automatic setup. Then just activate the plugin and you are ready to use new tags that plugin includes like others.
+
+p. For usage, basically just put wrap (contain) content in your pages/forms/articles with @<txp:rah_repeat></txp:rah_repeat>@-container tags, and customize output with your desired attributes. Contained content will be repeated and suplied with defined value(s).
+
+h3(#attributes). Attributes
+
+p. The main container tag is @<txp:rah_repeat>@ and attributes for it follow.
+
+p. *delimiter*
+Delimiter used to split the defined @value@ into multiple values. Default is comma.
+Example: @delimiter="|"@ Default: @","@
+
+p. *value*
+Value to be split and suplied. Default is unset.
+Example: @value="dog,cat,human"@ Default: @""@
+
+p. The second tag, @<txp:rah_repeat_value />@ is single tag. It has no attributes. It's used to deliver split values. See examples.
+
+h3(#example). Examples
+
+p. *Example #1: Simple example.*
+
+bc. <txp:rah_repeat value="dog,cat,human">
+	<li><txp:rah_repeat_value /></li>
+</txp:rah_repeat>
+
+Returns:
+
+bc. <li>dog</li>
+<li>cat</li>
+<li>human</li>
+
+p. *Example #2: Custom fields.*
+
+p. Let's say that you have comma seperated list of items stored inside custom field. For example, list of "Nameless" videservice's video ID's (@ID1,ID2,ID3,ID4@). Thus you need to render video player code for every ID.
+
+bc. <txp:rah_repeat value='<txp:custom_field name="MyCustomFieldName" />'>
+	<object width="600" height="380">
+		<param name="movie" value="http://example.com/v/<txp:rah_repeat_value />"></param>
+		<embed src="http://example.com/v/<txp:rah_repeat_value />" width="600" height="380"></embed>
+	</object>
+</txp:rah_repeat>
+
+Outputs four (4) videoplayers.
+
+h3(#changelog). Changelog
+
+p. *Version 0.1*
+
+* First release
