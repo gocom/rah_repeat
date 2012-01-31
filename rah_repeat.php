@@ -1,17 +1,19 @@
-<?php	##################
-	#
-	#	rah_repeat-plugin for Textpattern
-	#	version 0.7
-	#	by Jukka Svahn
-	#	http://rahforum.biz
-	#
-	#	Copyright (C) 2011 Jukka Svahn <http://rahforum.biz>
-	#	Licensed under GNU Genral Public License version 2
-	#	http://www.gnu.org/licenses/gpl-2.0.html
-	#
-	##################
+<?php
 
-	function rah_repeat($atts,$thing='') {
+/**
+ * Rah_repeat plugin for Textpattern CMS
+ *
+ * @author Jukka Svahn
+ * @date 2009-
+ * @license GNU GPLv2
+ * @link http://rahforum.biz/plugins/rah_repeat
+ *
+ * Copyright (C) 2012 Jukka Svahn <http://rahforum.biz>
+ * Licensed under GNU Genral Public License version 2
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ */
+
+	function rah_repeat($atts, $thing='') {
 		global $rah_repeat;
 		
 		extract(lAtts(array(
@@ -90,31 +92,31 @@
 	}
 
 /**
-	Returns current value
-	@return mixed
-*/
+ * Returns current value
+ * @return string
+ */
 
-	function rah_repeat_value($atts,$thing='') {
+	function rah_repeat_value($atts, $thing='') {
 		global $rah_repeat;
 		return $rah_repeat['string'];
 	}
 
 /**
-	Conditional tag for testing if the item is first
-	@return string User-markup
-*/
+ * Conditional tag for testing if the item is first
+ * @return string User-markup
+ */
 
-	function rah_repeat_if_first($atts,$thing='') {
+	function rah_repeat_if_first($atts, $thing='') {
 		global $rah_repeat;
 		return parse(EvalElse($thing,$rah_repeat['first'] == true));
 	}
 
 /**
-	Conditional tag for testing if the item is last
-	@return string User-markup
-*/
+ * Conditional tag for testing if the item is last
+ * @return string User-markup
+ */
 
-	function rah_repeat_if_last($atts,$thing='') {
+	function rah_repeat_if_last($atts, $thing='') {
 		global $rah_repeat;
 		return parse(EvalElse($thing,$rah_repeat['last'] == true));
 	}
