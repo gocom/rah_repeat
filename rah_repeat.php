@@ -108,7 +108,7 @@
 		global $rah_repeat;
 		
 		extract(lAtts(array(
-			'escape' => 0,
+			'escape' => 1,
 		), $atts));
 		
 		return $escape ? 
