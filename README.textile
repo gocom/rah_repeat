@@ -10,7 +10,7 @@ and do custom lists.
 
 h2. Requirements
 
-* PHP 4.4.0 or newer.
+* PHP 5 or newer.
 * Textpattern 4.0.7 or newer.
 
 Recommended:
@@ -30,6 +30,10 @@ p. The main container tag is @<txp:rah_repeat>@ and attributes for it follow.
 p. *value*
 Sets the values that are passed to the tag.
 Example: @value="dog,cat,human"@ Default: @""@
+
+p. *range*
+Creates a list of values containing a range of elements. Using @range@ overrides @value@ attribute. It works identically to PHP's "range":http://php.net/manual/en/function.range.php function, and supports same sequences as it does; as of now integers and alphabet. The @range@ attribute's value consists of three parts; @minimum@, @maximum@ and @step@, which are separated by a comma (or a custom @delimiter@). By default this option isn't used. 
+Example: @range="1, 10"@ Default: @""@
 
 p. *delimiter*
 Sets the delimiter used to split the provided @value@ into list of multiple values. Default delimiter is comma (@,@).
@@ -206,7 +210,33 @@ bc. <txp:rah_repeat value="foo,bar,foobar" exclude="foo,bar">
 
 p. Returns: @foobar@
 
+h3. Using range attribute
+
+p. With @range@ it's possible to create a range of elements with out specifying each. For example generating list of alphabet (A-z) can be done with range.
+
+bc. <txp:rah_repeat range="a, z, 1">
+	<txp:rah_repeat_value />
+</txp:rah_repeat>
+
+p. Or listing number from 0 to 10.
+
+bc. <txp:rah_repeat range="0, 10, 1">
+	<txp:rah_repeat_value />
+</txp:rah_repeat>
+
+p. Or values @0@, @2@, @4@, and @6@.
+
+bc. <txp:rah_repeat range="0, 6, 2">
+	<txp:rah_repeat_value />
+</txp:rah_repeat>
+
 h2. Changelog
+
+h3. Version 0.8 - upcoming
+
+* Fixed: made @sort@ attribute's direction optional.
+* Added @range@ attribute.
+* Now requires PHP 5 (or newer).
 
 h3. Version 0.7 - 2011/12/02
 
