@@ -31,8 +31,8 @@
 			'range' => '',
 		),$atts));
 		
-		if($range && strpos($range, $delimiter)) {
-			$r = array_merge(array(0, 10, 1), explode($delimiter, $range));
+		if($range && strpos($range, ',')) {
+			$r = array_merge(array(0, 10, 1), do_list($range));
 			$values = range($r[0], $r[1], $r[2]);
 		}
 		

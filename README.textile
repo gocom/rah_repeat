@@ -32,7 +32,7 @@ Sets the values that are passed to the tag.
 Example: @value="dog,cat,human"@ Default: @""@
 
 p. *range*
-Creates a list of values containing a range of elements. Using @range@ overrides @value@ attribute. It works identically to PHP's "range":http://php.net/manual/en/function.range.php function, and supports same sequences as it does; as of now integers and alphabet. The @range@ attribute's value consists of three parts; @minimum@, @maximum@ and @step@, which are separated by a comma (or a custom @delimiter@). By default this option isn't used. 
+Creates a list of values containing a range of elements. Using @range@ overrides @value@ attribute. It works identically to PHP's "range":http://php.net/manual/en/function.range.php function, and supports same sequences as it does; as of now integers and alphabet. The @range@ attribute's value consists of three parts; @minimum@, @maximum@ and @step@, which are separated by a comma.
 Example: @range="1, 10"@ Default: @""@
 
 p. *delimiter*
