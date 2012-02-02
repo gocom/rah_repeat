@@ -29,7 +29,7 @@
 			'exclude' => '',
 			'trim' => 0,
 			'range' => '',
-		),$atts));
+		), $atts));
 		
 		if($range && strpos($range, ',')) {
 			$r = array_merge(array(0, 10, 1), do_list($range));
@@ -104,9 +104,15 @@
  * @return string
  */
 
-	function rah_repeat_value() {
+	function rah_repeat_value($atts) {
 		global $rah_repeat;
-		return $rah_repeat['string'];
+		
+		extract(lAtts(array(
+			'escape' => 0,
+		), $atts));
+		
+		return $escape ? 
+			htmlspecialchars($rah_repeat['string']) : $rah_repeat['string'];
 	}
 
 /**
