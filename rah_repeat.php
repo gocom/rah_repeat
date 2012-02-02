@@ -104,7 +104,7 @@
  * @return string
  */
 
-	function rah_repeat_value($atts, $thing='') {
+	function rah_repeat_value() {
 		global $rah_repeat;
 		return $rah_repeat['string'];
 	}
