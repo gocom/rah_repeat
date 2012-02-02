@@ -27,10 +27,18 @@
 			'duplicates' => 0,
 			'sort' => '',
 			'exclude' => '',
-			'trim' => 0
+			'trim' => 0,
+			'range' => '',
 		),$atts));
-
-		$values = explode($delimiter, $value);
+		
+		if($range && strpos($range, $delimiter)) {
+			$r = array_merge(array(0, 10, 1), explode($delimiter, $range));
+			$values = range($r[0], $r[1], $r[2]);
+		}
+		
+		else {
+			$values = explode($delimiter, $value);
+		}
 		
 		if($trim == 1)
 			$values = doArray($values, 'trim');
@@ -51,7 +59,7 @@
 			return;
 		
 		if(!empty($sort)) {
-			list($crit, $dir) = explode(' ', $sort);
+			list($crit, $dir) = array_merge(array('', ''), explode(' ', $sort));
 			
 			if($crit == 'numeric')
 				sort($values, SORT_NUMERIC);
