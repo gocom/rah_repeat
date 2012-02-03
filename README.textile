@@ -23,9 +23,17 @@ p. The general behavior stands: paste plugin code to the plugin installer textar
 
 p. Basically just put wrap (contain) content in your pages/forms/articles with @<txp:rah_repeat></txp:rah_repeat>@ container tags, and customize output with your desired attributes. Contained content will be repeated and supplied with defined value(s).
 
-h2. Attributes
+h2. Tag and attributes
 
-p. The main container tag is @<txp:rah_repeat>@ and attributes for it follow.
+The plugin comes with total of four tags. The main tag @rah_repeat@, a single tag @rah_repeat_value@, and two conditionals @rah_repeat_if_first@ and @rah_repeat_if_last@.
+
+h3. rah_repeat - @<txp:rah_repeat>@
+
+bc. <txp:rah_repeat value="value1, value2, ...">
+	<txp:rah_repeat_value />
+</txp:rah_repeat>
+
+p. The tag, @<txp:rah_repeat>@, is the plugin's main tag. It's a container tag used to iterations, repeating and listing from the given values. Attributes for the tag follow.
 
 p. *value*
 Sets the values that are passed to the tag.
@@ -77,14 +85,33 @@ Default: @class=""@ Example: @"plugin"@
 
 p. The plugins has three more extra tags. None of extra the tags have attributes, and should be used wrapped inside @<txp:rah_repeat></txp:rah_repeat>@ tags. The tags are as follows.
 
-p. @<txp:rah_repeat_value />@
-Is a single tag, and has no attributes. It's used to display the provided values, and should be used wrapped inside @<txp:rah_repeat></txp:rah_repeat>@ tags. See examples for some usage instructions.
+h3. rah_repeat_value - @<txp:rah_repeat_value />@
 
-p. @<txp:rah_repeat_if_first>@
-Is a container tag, and has no attributes. Returns contained statement if the current item is the first item.
+p. Is a single tag, used to display the provided values. It should be used wrapped inside @<txp:rah_repeat></txp:rah_repeat>@ tags. Attributes for the tag follow.
 
-p. @<txp:rah_repeat_if_last>@
-Is a container tag, and has no attributes. Returns contained statement if the current item is the last item.
+p. *escape*
+If set to @1@, HTML and Textpattern markup are escaped. HTML specialcharacters are converted to HTML entities. By default this option is used.
+Default: @escape="1"@ Example: @"0"@
+
+h3. rah_repeat_if_first - @<txp:rah_repeat_if_first>@
+
+bc. <txp:rah_repeat value="value1, value2, ...">
+	<txp:rah_repeat_if_first>
+		Fist item.
+	</txp:rah_repeat_if_first>
+</txp:rah_repeat>
+
+p. The tag, @<txp:rah_repeat_if_first>@, is a container tag, and has no attributes. It's a conditional tag that checks if the current items is the first one.
+
+h3. rah_repeat_if_last - @<txp:rah_repeat_if_last>@
+
+bc. <txp:rah_repeat value="value1, value2, ...">
+	<txp:rah_repeat_if_last>
+		Last item.
+	</txp:rah_repeat_if_last>
+</txp:rah_repeat>
+
+p. The tag, @<txp:rah_repeat_if_last>@, is a container tag, and has no attributes. It's a conditional tag that checks if the current items is the last one.
 
 h2. Examples
 
@@ -236,6 +263,7 @@ h3. Version 0.8 - upcoming
 
 * Fixed: made @sort@ attribute's direction optional.
 * Added @range@ attribute.
+* Added @escape@ attribute to @<txp:rah_repeat_value />@.
 * Now requires PHP 5 (or newer).
 
 h3. Version 0.7 - 2011/12/02
