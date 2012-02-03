@@ -5,8 +5,7 @@ p. Split, loop and repeat a value by value. With this "Textpattern":http://www.t
 h2. List of features
 
 * Split list of values into tiny blocks and represent them individually.
-* Exclude values, remove duplicates.
-and do custom lists.
+* Exclude values, remove duplicates, and do custom lists.
 
 h2. Requirements
 
