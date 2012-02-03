@@ -25,7 +25,7 @@ p. Basically just put wrap (contain) content in your pages/forms/articles with @
 
 h2. Tag and attributes
 
-The plugin comes with total of four tags. The main tag @rah_repeat@, a single tag @rah_repeat_value@, and two conditionals @rah_repeat_if_first@ and @rah_repeat_if_last@.
+The plugin comes with a total of four tags. The main tag @rah_repeat@, a single tag @rah_repeat_value@, and two conditionals @rah_repeat_if_first@ and @rah_repeat_if_last@.
 
 h3. rah_repeat - @<txp:rah_repeat>@
 
@@ -33,7 +33,7 @@ bc. <txp:rah_repeat value="value1, value2, ...">
 	<txp:rah_repeat_value />
 </txp:rah_repeat>
 
-p. The tag, @<txp:rah_repeat>@, is the plugin's main tag. It's a container tag used to iterations, repeating and listing from the given values. Attributes for the tag follow.
+p. The tag, @<txp:rah_repeat>@, is the plugin's main tag. It's a container tag used for iterations, repeating and listing performed with the given values. Attributes for the tag are as follows.
 
 p. *value*
 Sets the values that are passed to the tag.
@@ -48,7 +48,7 @@ Sets the delimiter used to split the provided @value@ into list of multiple valu
 Example: @delimiter="|"@ Default: @","@
 
 p. *duplicates*
-Removes duplicate values from the list. If the attribute is set to @1@, only first appearance of the value is used, duplicates are stripped off. Default is @0@, duplicates are not removed.
+Removes duplicate values from the list. If the attribute is set to @1@, only first appearance of the value is used and duplicates are stripped off. Default is @0@, and duplicates are not removed.
 Example: @duplicates="1"@ Default: @"0"@.
 
 p. *exclude*
@@ -60,15 +60,15 @@ If set to @1@, the provided values are trimmed from surrounding extra whitespace
 Example: @trim="1"@ Default: @0@
 
 p. *sort*
-Sort the values. If the attribute is used, all values are rearranged to the specified order. Allowed values are @regular@ (sorts without checking type), @numeric@ (sorts in numeric order), @string@ (sort as strings) and @locale@ (sort according server's locale settings), followed by sorting order, either @desc@ and @asc@. Default the option isn't used (unset), and the values are returned in the order they were supplied.
+Sorts the values. If the attribute is used, all values are rearranged to the specified order. Available options are @regular@ (sorts without checking type), @numeric@ (sorts in numeric order), @string@ (sorts as strings) and @locale@ (sorts according server's locale settings), followed by sorting direction, either @desc@ and @asc@. By default the option isn't used (unset), and the values are returned in the order they were supplied.
 Example: @sort="regular asc"@. Default: @""@.
 
 p. *offset*
-The number of items to skip. Default is @0@, no offset is used.
+The number of items to skip. Default is @0@ (none).
 Example: @offset="5"@ Default: @"0"@
 
 p. *limit*
-The number of items to display. By default not limit is used.
+The number of items to display. By default there is no limit, and all items are returned.
 Example: @limit="10"@ Default: @""@
 
 p. *wraptag*
@@ -83,14 +83,12 @@ p. *class*
 The (X)HTML class applied to the wraptag. Default is unset.
 Default: @class=""@ Example: @"plugin"@
 
-p. The plugins has three more extra tags. None of extra the tags have attributes, and should be used wrapped inside @<txp:rah_repeat></txp:rah_repeat>@ tags. The tags are as follows.
-
 h3. rah_repeat_value - @<txp:rah_repeat_value />@
 
-p. Is a single tag, used to display the provided values. It should be used wrapped inside @<txp:rah_repeat></txp:rah_repeat>@ tags. Attributes for the tag follow.
+p. Is a single tag, used to display the provided values. It should be used wrapped inside @<txp:rah_repeat></txp:rah_repeat>@ tags. The tag has a single attribute, @escape@.
 
 p. *escape*
-If set to @1@, HTML and Textpattern markup are escaped. HTML specialcharacters are converted to HTML entities. By default this option is used.
+If set to @1@, HTML and Textpattern markup are escaped, and specialcharacters are converted to HTML entities. By default this option is on.
 Default: @escape="1"@ Example: @"0"@
 
 h3. rah_repeat_if_first - @<txp:rah_repeat_if_first>@
@@ -101,7 +99,7 @@ bc. <txp:rah_repeat value="value1, value2, ...">
 	</txp:rah_repeat_if_first>
 </txp:rah_repeat>
 
-p. The tag, @<txp:rah_repeat_if_first>@, is a container tag, and has no attributes. It's a conditional tag that checks if the current items is the first one.
+p. The tag, @<txp:rah_repeat_if_first>@, is a container tag, and has no attributes. It's a conditional tag that checks if the current item is the first one.
 
 h3. rah_repeat_if_last - @<txp:rah_repeat_if_last>@
 
@@ -111,7 +109,7 @@ bc. <txp:rah_repeat value="value1, value2, ...">
 	</txp:rah_repeat_if_last>
 </txp:rah_repeat>
 
-p. The tag, @<txp:rah_repeat_if_last>@, is a container tag, and has no attributes. It's a conditional tag that checks if the current items is the last one.
+p. The tag, @<txp:rah_repeat_if_last>@, is a container tag, and has no attributes. It's a conditional tag that checks if the current item is the last one.
 
 h2. Examples
 
@@ -146,7 +144,7 @@ bc. <txp:rah_repeat value='<txp:custom_field name="MyCustomFieldName" />'>
 	</object>
 </txp:rah_repeat>
 
-Above code would output 4 embedded players (one for each clip), displaying the videos specified with the custom field.
+p. Above code would output 4 embedded players (one for each clip), displaying the videos specified with the custom field.
 
 h3. Taking advantage of offset and limit attributes
 
@@ -174,7 +172,7 @@ bc. <txp:rah_repeat value="group1|item1|item2,group2|item1|item2">
 	</ul>
 </txp:rah_repeat>
 
-Returns two HTML lists:
+p. Returns two HTML lists:
 
 bc. <ul>
 	<li>group1</li>
