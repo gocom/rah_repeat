@@ -23,7 +23,7 @@ p. The general behavior stands: paste plugin code to the plugin installer textar
 
 p. Basically just put wrap (contain) content in your pages/forms/articles with @<txp:rah_repeat></txp:rah_repeat>@ container tags, and customize output with your desired attributes. Contained content will be repeated and supplied with defined value(s).
 
-h2. Tag and attributes
+h2. Tags and attributes
 
 The plugin comes with a total of four tags. The main tag @rah_repeat@, a single tag @rah_repeat_value@, and two conditionals @rah_repeat_if_first@ and @rah_repeat_if_last@.
 
