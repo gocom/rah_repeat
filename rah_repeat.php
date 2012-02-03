@@ -26,7 +26,7 @@
 			'class' => '',
 			'duplicates' => 0,
 			'sort' => '',
-			'exclude' => '',
+			'exclude' => NULL,
 			'trim' => 0,
 			'range' => '',
 		), $atts));
@@ -46,7 +46,7 @@
 		if($duplicates == 1)
 			$values = array_unique($values);
 		
-		if(!empty($exclude)) {
+		if($exclude !== NULL) {
 			$exclude = explode($delimiter, $exclude);
 			
 			if($trim == 1)

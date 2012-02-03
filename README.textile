@@ -52,8 +52,8 @@ Removes duplicate values from the list. If the attribute is set to @1@, only fir
 Example: @duplicates="1"@ Default: @"0"@.
 
 p. *exclude*
-Exclude certain values from the list. Comma (or @delimiter@, if @delimiter@ is changed) separated list of values if multiple. Default is unset (@""@), and nothing is excluded.
-Example: @exclude="foo,bar"@ Default: @""@
+Exclude certain values from the list. Comma (or @delimiter@, if @delimiter@ is changed) separated list of values if multiple. Default the attribute is undefined, and nothing is excluded.
+Example: @exclude="foo,bar"@ Default: @undefined@
 
 p. *trim*
 If set to @1@, the provided values are trimmed from surrounding extra whitespace (spaces, line-breaks). This can be helpful if the provided values are from user-input (i.e. from article field), or the values just have extra whitespace, and the resulting output has to be clean (i.e. posed to XML, JavaScript, or to a "variable":http://textpattern.net/wiki/index.php?title=variable for comparison). By default the option is off, and values are not trimmed.
@@ -260,8 +260,9 @@ h2. Changelog
 h3. Version 0.8 - upcoming
 
 * Fixed: made @sort@ attribute's direction optional.
-* Added @range@ attribute.
-* Added @escape@ attribute to @<txp:rah_repeat_value />@.
+* Added: @exclude@ can now take and exclude empty strings (@""@) and zeros (@0@).
+* Added: @range@ attribute.
+* Added: @escape@ attribute to @<txp:rah_repeat_value />@.
 * Now requires PHP 5 (or newer).
 
 h3. Version 0.7 - 2011/12/02
