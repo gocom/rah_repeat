@@ -13,8 +13,8 @@
  * http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-	function rah_repeat($atts, $thing='') {
-		global $rah_repeat;
+	function rah_repeat($atts, $thing=NULL) {
+		global $rah_repeat, $rah_repeat_var, $variable;
 		
 		extract(lAtts(array(
 			'delimiter' => ',',
@@ -29,6 +29,7 @@
 			'exclude' => NULL,
 			'trim' => 0,
 			'range' => '',
+			'assign' => NULL,
 		), $atts));
 		
 		if($range && strpos($range, ',')) {
@@ -49,14 +50,12 @@
 		if($exclude !== NULL) {
 			$exclude = explode($delimiter, $exclude);
 			
-			if($trim == 1)
+			if($trim == 1) {
 				$exclude = doArray($exclude, 'trim');
+			}
 			
 			$values = array_diff($values, $exclude);
 		}
-		
-		if(empty($values))
-			return;
 		
 		if(!empty($sort)) {
 			list($crit, $dir) = array_merge(array('', ''), explode(' ', $sort));
@@ -72,6 +71,19 @@
 			
 			if($dir == 'desc') 
 				$values = array_reverse($values);
+		}
+		
+		if($assign !== NULL) {
+			$rah_repeat_var = array();
+			
+			foreach(do_list($assign) as $key => $var) {
+				$rah_repeat_var[$var] = isset($values[$key]) ? $values[$key] : '';
+				$variable[$var] = $rah_repeat_var[$var];
+			}
+		}
+		
+		if(empty($values) || $thing === NULL) {
+			return;
 		}
 
 		$values = array_slice($values, $offset, $limit);
@@ -105,14 +117,15 @@
  */
 
 	function rah_repeat_value($atts) {
-		global $rah_repeat;
+		global $rah_repeat, $rah_repeat_var;
 		
 		extract(lAtts(array(
 			'escape' => 1,
+			'name' => NULL,
 		), $atts));
 		
-		return $escape ? 
-			htmlspecialchars($rah_repeat['string']) : $rah_repeat['string'];
+		$value = $name !== NULL ? $rah_repeat_var[$name] : $rah_repeat['string'];
+		return $escape ? htmlspecialchars($value) : $value;
 	}
 
 /**
