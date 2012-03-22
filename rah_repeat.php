@@ -41,36 +41,33 @@
 			$values = explode($delimiter, $value);
 		}
 		
-		if($trim == 1)
+		if($trim) {
 			$values = doArray($values, 'trim');
+		}
 		
-		if($duplicates == 1)
+		if($duplicates) {
 			$values = array_unique($values);
+		}
 		
 		if($exclude !== NULL) {
 			$exclude = explode($delimiter, $exclude);
 			
-			if($trim == 1) {
+			if($trim) {
 				$exclude = doArray($exclude, 'trim');
 			}
 			
 			$values = array_diff($values, $exclude);
 		}
 		
-		if(!empty($sort)) {
-			list($crit, $dir) = array_merge(array('', ''), explode(' ', $sort));
+		if($sort && $sort = doArray(do_list($sort, ' '), 'strtoupper')) {
+		
+			if(defined('SORT_'.$sort[0])) {
+				sort($values, constant('SORT_'.$sort[0]));
+			}
 			
-			if($crit == 'numeric')
-				sort($values, SORT_NUMERIC);
-			elseif($crit == 'string')
-				sort($values, SORT_STRING);
-			elseif($crit == 'locale')
-				sort($values, SORT_LOCALE_STRING);
-			else
-				sort($values, SORT_REGULAR);
-			
-			if($dir == 'desc') 
+			if(end($sort) == 'DESC') {
 				$values = array_reverse($values);
+			}
 		}
 		
 		if($assign !== NULL) {

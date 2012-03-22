@@ -59,7 +59,7 @@ If set to @1@, the provided values are trimmed from surrounding extra whitespace
 Example: @trim="1"@ Default: @0@
 
 p. *sort*
-Sorts the values. If the attribute is used, all values are rearranged to the specified order. Available options are @regular@ (sorts without checking type), @numeric@ (sorts in numeric order), @string@ (sorts as strings) and @locale@ (sorts according server's locale settings), followed by sorting direction, either @desc@ and @asc@. By default the option isn't used (unset), and the values are returned in the order they were supplied.
+Sorts the values. If the attribute is used, all values are rearranged to the specified order. Available options are @regular@ (sorts without checking type), @numeric@ (sorts in numeric order), @string@ (sorts as strings) and @locale_string@ (sorts according server's locale settings), followed by sorting direction, either @desc@ and @asc@. By default the option isn't used (unset), and the values are returned in the order they were supplied.
 Example: @sort="regular asc"@. Default: @""@.
 
 p. *offset*
@@ -81,6 +81,10 @@ Default: @break=""@ Example: @"br"@
 p. *class*
 The (X)HTML class applied to the wraptag. Default is unset.
 Default: @class=""@ Example: @"plugin"@
+
+p. *assign*
+Assigns values as Textpattern's "variables":http://textpattern.net/wiki/index.php?title=variable. Takes comma-separated list of variable names, @variable1, variable2, @variable3, ...@.
+Example: @assign="var"@ Default: @unset@.
 
 h3. rah_repeat_value - @<txp:rah_repeat_value />@
 
@@ -261,7 +265,11 @@ h3. Version 0.8 - upcoming
 * Fixed: made @sort@ attribute's direction optional.
 * Added: @exclude@ can now take and exclude empty strings (@""@) and zeros (@0@).
 * Added: @range@ attribute.
+* Added: @assign@ attribute.
 * Added: @escape@ attribute to @<txp:rah_repeat_value />@.
+* Added: Support for natural ordering (@sort="natural"@).
+* Changed: Renamed @locale@ sorting option to @LOCALE_STRING@.
+* Changed: Order can be reversed with out re-sorting by using @sort="desc"@.
 * Now requires PHP 5 (or newer).
 
 h3. Version 0.7 - 2011/12/02
