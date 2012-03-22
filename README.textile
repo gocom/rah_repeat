@@ -258,6 +258,21 @@ bc. <txp:rah_repeat range="0, 6, 2">
 	<txp:rah_repeat_value />
 </txp:rah_repeat>
 
+h3. Assign variables with assign attribute
+
+p. @assign@ attribute allows exporting split values as "variables":http://textpattern.net/wiki/index.php?title=variable.
+
+bc.. <txp:rah_repeat value="red,water,male" assign="color, drink, sex" />
+
+Color: <txp:rah_repeat_value name="color" />
+Drink: <txp:rah_repeat_value name="drink" />
+
+<txp:if_variable name="sex" value="male">
+	M
+<txp:else />
+	W
+</txp:if_variable>
+
 h2. Changelog
 
 h3. Version 0.8 - upcoming
