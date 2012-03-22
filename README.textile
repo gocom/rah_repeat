@@ -72,15 +72,15 @@ Example: @limit="10"@ Default: @""@
 
 p. *wraptag*
 The (X)HTML tag, without brackets used to wrap the output. Default is unset.
-Default: @wraptag=""@ Example: @"div"@
+Example: @wraptag="div"@ Default: @""@
 
 p. *break*
 The (X)HTML tag (without brackets) or string to separate list items. Default is unset.
-Default: @break=""@ Example: @"br"@
+Example: @"break="br"@ Default: @""@
 
 p. *class*
 The (X)HTML class applied to the wraptag. Default is unset.
-Default: @class=""@ Example: @"plugin"@
+Example: @class="plugin"@ Default: @""@
 
 p. *assign*
 Assigns values as Textpattern's "variables":http://textpattern.net/wiki/index.php?title=variable. Takes comma-separated list of variable names, @variable1, variable2, @variable3, ...@.
@@ -92,7 +92,7 @@ p. Is a single tag, used to display the provided values. It should be used wrapp
 
 p. *escape*
 If set to @1@, HTML and Textpattern markup are escaped, and specialcharacters are converted to HTML entities. By default this option is on.
-Default: @escape="1"@ Example: @"0"@
+Example: @escape="0"@ Default: @"1"@
 
 h3. rah_repeat_if_first - @<txp:rah_repeat_if_first>@
 
