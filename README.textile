@@ -48,7 +48,7 @@ Example: @delimiter="|"@ Default: @","@
 
 p. *duplicates*
 Removes duplicate values from the list. If the attribute is set to @1@, only first appearance of the value is used and duplicates are stripped off. Default is @0@, and duplicates are not removed.
-Example: @duplicates="1"@ Default: @"0"@.
+Example: @duplicates="1"@ Default: @"0"@
 
 p. *exclude*
 Exclude certain values from the list. Comma (or @delimiter@, if @delimiter@ is changed) separated list of values if multiple. Default the attribute is undefined, and nothing is excluded.
@@ -60,7 +60,7 @@ Example: @trim="1"@ Default: @0@
 
 p. *sort*
 Sorts the values. If the attribute is used, all values are rearranged to the specified order. Available options are @regular@ (sorts without checking type), @numeric@ (sorts in numeric order), @string@ (sorts as strings) and @locale_string@ (sorts according server's locale settings), followed by sorting direction, either @desc@ and @asc@. By default the option isn't used (unset), and the values are returned in the order they were supplied.
-Example: @sort="regular asc"@. Default: @""@.
+Example: @sort="regular asc"@ Default: @""@
 
 p. *offset*
 The number of items to skip. Default is @0@ (none).
@@ -84,7 +84,7 @@ Example: @class="plugin"@ Default: @""@
 
 p. *assign*
 Assigns values as Textpattern's "variables":http://textpattern.net/wiki/index.php?title=variable. Takes comma-separated list of variable names, @variable1, variable2, @variable3, ...@.
-Example: @assign="var"@ Default: @unset@.
+Example: @assign="var"@ Default: @unset@
 
 h3. rah_repeat_value - @<txp:rah_repeat_value />@
 
