@@ -121,7 +121,14 @@
 			'name' => NULL,
 		), $atts));
 		
-		$value = $name !== NULL ? $rah_repeat_var[$name] : $rah_repeat['string'];
+		if($name !== NULL) {
+			$value = isset($rah_repeat_var[$name]) ? $rah_repeat_var[$name] : '';
+		}
+		
+		else {
+			$value = $rah_repeat['string'];
+		}
+
 		return $escape ? htmlspecialchars($value) : $value;
 	}
 
