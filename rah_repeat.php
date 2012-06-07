@@ -105,7 +105,7 @@
 		}
 
 		unset($rah_repeat);
-		return doWrap($out,$wraptag,$break,$class);
+		return doWrap($out, $wraptag, $break, $class);
 	}
 
 /**
@@ -139,7 +139,7 @@
 
 	function rah_repeat_if_first($atts, $thing='') {
 		global $rah_repeat;
-		return parse(EvalElse($thing,$rah_repeat['first'] == true));
+		return parse(EvalElse($thing, $rah_repeat['first'] == true));
 	}
 
 /**
@@ -149,6 +149,6 @@
 
 	function rah_repeat_if_last($atts, $thing='') {
 		global $rah_repeat;
-		return parse(EvalElse($thing,$rah_repeat['last'] == true));
+		return parse(EvalElse($thing, $rah_repeat['last'] == true));
 	}
 ?>
