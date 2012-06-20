@@ -9,12 +9,8 @@ h2. List of features
 
 h2. Requirements
 
-* PHP 5 or newer.
-* Textpattern 4.0.7 or newer.
-
-Recommended:
-
-* Textpattern 4.4.1 or newer.
+* Textpattern 4.5.0 or newer.
+* PHP 5.2 or newer.
 
 h2. Installation and usage
 
