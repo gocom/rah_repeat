@@ -129,7 +129,7 @@
 			$value = $rah_repeat['string'];
 		}
 
-		return $escape ? htmlspecialchars($value) : $value;
+		return $escape ? txpspecialchars($value) : $value;
 	}
 
 /**
