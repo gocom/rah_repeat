@@ -14,7 +14,7 @@
  */
 
 	function rah_repeat($atts, $thing=NULL) {
-		global $rah_repeat, $rah_repeat_var, $variable;
+		global $rah_repeat, $variable;
 		
 		extract(lAtts(array(
 			'delimiter' => ',',
@@ -71,11 +71,10 @@
 		}
 		
 		if($assign !== NULL) {
-			$rah_repeat_var = array();
-			
 			foreach(do_list($assign) as $key => $var) {
-				$rah_repeat_var[$var] = isset($values[$key]) ? $values[$key] : '';
-				$variable[$var] = $rah_repeat_var[$var];
+				$value = isset($values[$key]) ? $values[$key] : '';
+				$variable[$var] = txpspecialchars($value);
+				$variable[$var.'_raw'] = $value;
 			}
 		}
 		
@@ -114,22 +113,21 @@
  */
 
 	function rah_repeat_value($atts) {
-		global $rah_repeat, $rah_repeat_var;
+		global $rah_repeat;
 		
 		extract(lAtts(array(
 			'escape' => 1,
-			'name' => NULL,
 		), $atts));
 		
-		if($name !== NULL) {
-			$value = isset($rah_repeat_var[$name]) ? $rah_repeat_var[$name] : '';
+		if(!isset($rah_repeat['string'])) {
+			return;
 		}
 		
-		else {
-			$value = $rah_repeat['string'];
+		if($escape) {
+			return txpspecialchars($rah_repeat['string']);
 		}
 
-		return $escape ? txpspecialchars($value) : $value;
+		return $rah_repeat['string'];
 	}
 
 /**

@@ -260,8 +260,8 @@ p. @assign@ attribute allows exporting split values as "variables":http://textpa
 
 bc.. <txp:rah_repeat value="red,water,male" assign="color, drink, sex" />
 
-Color: <txp:rah_repeat_value name="color" />
-Drink: <txp:rah_repeat_value name="drink" />
+Color: <txp:variable name="color" />
+Drink: <txp:variable name="drink" />
 
 <txp:if_variable name="sex" value="male">
 	M
