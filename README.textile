@@ -77,8 +77,8 @@ Exclude certain values from the list. The attribute takes a comma (or @delimiter
 Example: @exclude="foo,bar"@ Default: undefined
 
 p. *trim*
-Trims values from extra whitespace. This can be particularly helpful if the provided values are from user-input (e.g. from an article field), or the values just have extra whitespace, and the resulting output has to be clean (i.e. used in XML, JavaScript or to a "variable":http://textpattern.net/wiki/index.php?title=variable comparison). By default the option is off, and values are not trimmed.
-Example: @trim="1"@ Default: @"0"@
+Trims values from extra whitespace. This can be particularly helpful if the provided values are from user-input (e.g. from an article field), or the values just have extra whitespace, and the resulting output has to be clean (i.e. used in XML, JavaScript or to a "variable":http://textpattern.net/wiki/index.php?title=variable comparison). If you want to keep whitespace intact, you can use this attribute. By default the option is on, and values are trimmed.
+Example: @trim="0"@ Default: @"1"@
 
 p. *sort*
 Sorts the values. If the attribute is used, all values are rearranged to the specified order. Available options are @regular@ (sorts without checking the type), @numeric@ (sorts in a numeric order), @string@ (sorts as strings) and @locale_string@ (sorts according server's locale settings). All the values can be  followed by the sorting direction, either @desc@ and @asc@. By default the option isn't used (unset), and the values are returned in the order they were supplied.
@@ -113,8 +113,8 @@ bc. <txp:rah_repeat value="value1, value2, ...">
 p. Rah_repeat_value a single tag, used to display a iterated value. The tag should be used inside a @<txp:rah_repeat></txp:rah_repeat>@ block. The tag has a single attribute, @escape@.
 
 p. *escape*
-If set to @1@, HTML and Textpattern markup are escaped, and special characters are converted to HTML entities. By default this option is on.
-Example: @escape="0"@ Default: @"1"@
+If set to @1@, HTML and Textpattern markup are escaped, and special characters are converted to HTML entities. By default this option is off.
+Example: @escape="1"@ Default: @"0"@
 
 h3. rah_repeat_if_first
 
@@ -299,15 +299,16 @@ h2. Changelog
 
 h3. Version 0.8 - upcoming
 
-* Fixed: made @sort@ attribute's direction optional.
+* Fixed: made the @sort@ attribute's direction optional.
 * Added: @exclude@ can now take and exclude empty strings (@""@) and zeros (@0@).
-* Added: @range@ attribute.
-* Added: @assign@ attribute.
+* Added: @range@ attribute. Allows generating automated lists (@range="min, max, step"@).
+* Added: @assign@ attribute. Allows extracting values as variables.
 * Added: @escape@ attribute to @<txp:rah_repeat_value />@.
 * Added: Support for natural ordering (@sort="natural"@).
+* Changed: Now @trim@ is enabled by default. Previously values weren't trimmed from white-space by default.
 * Changed: Renamed @locale@ sorting option to @LOCALE_STRING@.
 * Changed: Order can be reversed with out re-sorting by using @sort="desc"@.
-* Now requires PHP 5 (or newer).
+* Now requires PHP 5.2 (or newer).
 
 h3. Version 0.7 - 2011/12/02
 
