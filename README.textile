@@ -22,7 +22,7 @@ p. Rah_repeat's installation follows the standard plugin installation steps.
 
 h2. Basics
 
-bc. <txp:rah_repeat range=min, max, step" value="value1, value2, ..." assign="variable1, variable2, ...">
+bc. <txp:rah_repeat range="min, max, step" value="value1, value2, ..." assign="variable1, variable2, ...">
 	...contained statement...
 </txp:rah_repeat>
 
