@@ -59,7 +59,7 @@
 			$values = array_diff($values, $exclude);
 		}
 		
-		if($sort && $sort = doArray(doArray(explode(' ', $sort, 2), 'trim'), 'strtoupper')) {
+		if($sort && $sort = doArray(doArray(explode(' ', trim($sort), 2), 'trim'), 'strtoupper')) {
 		
 			if(count($sort) == 2 && defined('SORT_'.$sort[0])) {
 				sort($values, constant('SORT_'.$sort[0]));
