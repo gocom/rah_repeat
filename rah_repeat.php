@@ -73,7 +73,7 @@
 		if($assign !== NULL) {
 			foreach(do_list($assign) as $key => $var) {
 				$value = isset($values[$key]) ? $values[$key] : '';
-				$variable[$var] = txpspecialchars($value);
+				$variable[$var] = htmlspecialchars($value);
 				$variable[$var.'_raw'] = $value;
 			}
 		}
@@ -124,7 +124,7 @@
 		}
 		
 		if($escape) {
-			return txpspecialchars($rah_repeat['string']);
+			return htmlspecialchars($rah_repeat['string']);
 		}
 
 		return $rah_repeat['string'];
