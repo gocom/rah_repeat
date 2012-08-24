@@ -240,7 +240,7 @@ p. Returns: @foo, bar, foobar@
 
 h3. Arrange the values from lowest to highest
 
-bc. <txp:rah_repeat break="," value="b, a, c," sort="regular asc">
+bc. <txp:rah_repeat break="," value="b, a, c" sort="regular asc">
 	<txp:rah_repeat_value />
 </txp:rah_repeat>
 
