@@ -65,7 +65,7 @@ Sets the delimiter that is used to split the provided @value@ into a list. Defau
 Example: @delimiter="|"@ Default: @","@
 
 p. *assign*
-Assigns values as Textpattern's "variables":http://textpattern.net/wiki/index.php?title=variable. Takes a comma-separated list of variable names, @variable1, variable2, @variable3, ...@.
+Assigns values as Textpattern's "variables":http://textpattern.net/wiki/index.php?title=variable. Takes a comma-separated list of variable names: @variable1, variable2, variable3, ...@.
 Example: @assign="label, value"@ Default: @unset@
 
 p. *duplicates*
