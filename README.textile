@@ -50,7 +50,7 @@ bc. <txp:rah_repeat value="value1, value2, ...">
 	...contained statement...
 </txp:rah_repeat>
 
-p. The @<txp:rah_repeat>@ tag is the plugin's main tag. It's a container tag used for iterations, repeating and listing performed with the given values. Attributes for the tag are as follows.
+p. The @<txp:rah_repeat>@ tag is the plugin's main tag. It's a container tag used for iterations. Attributes for it are as follows.
 
 p. *value*
 Sets the values that are passed to the tag. Multiple values are separated with the @delimiter@ which by default is a comma (@,@). This attribute or either @range@ is required.
