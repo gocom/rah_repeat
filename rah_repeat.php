@@ -75,8 +75,7 @@
 		if($assign !== NULL) {
 			foreach(do_list($assign) as $key => $var) {
 				$value = isset($values[$key]) ? $values[$key] : '';
-				$variable[$var] = htmlspecialchars($value);
-				$variable[$var.'_raw'] = $value;
+				$variable[$var] = $value;
 			}
 		}
 		
