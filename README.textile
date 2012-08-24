@@ -16,7 +16,7 @@ p. Rah_repeat's minimum requirements:
 
 h2. Installing
 
-p. Rah_function's installation follows the standard plugin installation steps.
+p. Rah_repeat's installation follows the standard plugin installation steps.
 
 # Download the plugin installation code.
 # Copy and paste the installation code into the _Install plugin_ box of your Textpattern Plugin pane.
