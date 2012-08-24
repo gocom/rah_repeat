@@ -70,6 +70,8 @@
 			}
 		}
 		
+		$values = array_slice($values, $offset, $limit);
+		
 		if($assign !== NULL) {
 			foreach(do_list($assign) as $key => $var) {
 				$value = isset($values[$key]) ? $values[$key] : '';
@@ -82,7 +84,6 @@
 			return;
 		}
 
-		$values = array_slice($values, $offset, $limit);
 		$count = count($values);
 
 		$i = 0;
