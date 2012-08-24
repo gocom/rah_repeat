@@ -124,7 +124,7 @@ bc. <txp:rah_repeat value="value1, value2, ...">
 	</txp:rah_repeat_if_first>
 </txp:rah_repeat>
 
-p. The tag, @<txp:rah_repeat_if_first>@, is a container tag, and has no attributes. It's a conditional tag that checks if the current item is the first one.
+p. The @<txp:rah_repeat_if_first>@ tag is a container, and has no attributes. It's a conditional tag that checks if the current item is the first one.
 
 h3. rah_repeat_if_last
 
@@ -134,7 +134,7 @@ bc. <txp:rah_repeat value="value1, value2, ...">
 	</txp:rah_repeat_if_last>
 </txp:rah_repeat>
 
-p. The tag, @<txp:rah_repeat_if_last>@, is a container tag, and has no attributes. It's a conditional tag that checks if the current item is the last one.
+p. The @<txp:rah_repeat_if_last>@ tag is a container, and has no attributes. It's a conditional tag that checks if the current item is the last one.
 
 h2. Examples
 
