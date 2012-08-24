@@ -27,7 +27,7 @@
 			'duplicates' => 0,
 			'sort' => '',
 			'exclude' => NULL,
-			'trim' => 0,
+			'trim' => 1,
 			'range' => '',
 			'assign' => NULL,
 		), $atts));
