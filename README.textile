@@ -20,42 +20,42 @@ p. Basically just put wrap (contain) content in your pages/forms/articles with @
 
 h2. Tags and attributes
 
-The plugin comes with a total of four tags. The main tag @rah_repeat@, a single tag @rah_repeat_value@, and two conditionals @rah_repeat_if_first@ and @rah_repeat_if_last@.
+p. The plugin comes with a total of four tags. The main tag @rah_repeat@, a single tag @rah_repeat_value@, and two conditionals @rah_repeat_if_first@ and @rah_repeat_if_last@.
 
-h3. rah_repeat - @<txp:rah_repeat>@
+h3. rah_repeat
 
 bc. <txp:rah_repeat value="value1, value2, ...">
-	<txp:rah_repeat_value />
+	...contained statement...
 </txp:rah_repeat>
 
 p. The tag, @<txp:rah_repeat>@, is the plugin's main tag. It's a container tag used for iterations, repeating and listing performed with the given values. Attributes for the tag are as follows.
 
 p. *value*
-Sets the values that are passed to the tag.
+Sets the values that are passed to the tag. Multiple values are separated with the @delimiter@ which by default is a comma (@,@). This attribute or either @range@ is required.
 Example: @value="dog,cat,human"@ Default: @""@
 
 p. *range*
-Creates a list of values containing a range of elements. Using @range@ overrides @value@ attribute. It works identically to PHP's "range":http://php.net/manual/en/function.range.php function, and supports same sequences as it does; as of now integers and alphabet. The @range@ attribute's value consists of three parts; @minimum@, @maximum@ and @step@, which are separated by a comma.
-Example: @range="1, 10"@ Default: @""@
+Creates a list of values containing a range of elements. Using @range@ overrides @value@ attribute. It works identically to PHP's "range":http://php.net/manual/en/function.range.php function and uses same sequence syntax as it. The attribute's value consists of three parts: @minimum@, @maximum@ and @step@, which are separated by a comma. All but @step@ are required.
+Example: @range="1, 10"@ Default: undefined
 
 p. *delimiter*
-Sets the delimiter used to split the provided @value@ into list of multiple values. Default delimiter is comma (@,@).
+Sets the delimiter that is used to split the provided @value@ into a list. Default delimiter is comma (@,@).
 Example: @delimiter="|"@ Default: @","@
 
 p. *duplicates*
-Removes duplicate values from the list. If the attribute is set to @1@, only first appearance of the value is used and duplicates are stripped off. Default is @0@, and duplicates are not removed.
+Removes duplicate values from the list. If the attribute is set to @1@, only first occurrence of the value is used and duplicates are stripped off.
 Example: @duplicates="1"@ Default: @"0"@
 
 p. *exclude*
-Exclude certain values from the list. Comma (or @delimiter@, if @delimiter@ is changed) separated list of values if multiple. Default the attribute is undefined, and nothing is excluded.
-Example: @exclude="foo,bar"@ Default: @undefined@
+Exclude certain values from the list. The attribute takes a comma (or @delimiter@, if @delimiter@ is changed) separated list of values.
+Example: @exclude="foo,bar"@ Default: undefined
 
 p. *trim*
-If set to @1@, the provided values are trimmed from surrounding extra whitespace (spaces, line-breaks). This can be helpful if the provided values are from user-input (i.e. from article field), or the values just have extra whitespace, and the resulting output has to be clean (i.e. posed to XML, JavaScript, or to a "variable":http://textpattern.net/wiki/index.php?title=variable for comparison). By default the option is off, and values are not trimmed.
-Example: @trim="1"@ Default: @0@
+Trims values from extra whitespace. This can be particularly helpful if the provided values are from user-input (e.g. from an article field), or the values just have extra whitespace, and the resulting output has to be clean (i.e. used in XML, JavaScript or to a "variable":http://textpattern.net/wiki/index.php?title=variable comparison). By default the option is off, and values are not trimmed.
+Example: @trim="1"@ Default: @"0"@
 
 p. *sort*
-Sorts the values. If the attribute is used, all values are rearranged to the specified order. Available options are @regular@ (sorts without checking type), @numeric@ (sorts in numeric order), @string@ (sorts as strings) and @locale_string@ (sorts according server's locale settings), followed by sorting direction, either @desc@ and @asc@. By default the option isn't used (unset), and the values are returned in the order they were supplied.
+Sorts the values. If the attribute is used, all values are rearranged to the specified order. Available options are @regular@ (sorts without checking the type), @numeric@ (sorts in a numeric order), @string@ (sorts as strings) and @locale_string@ (sorts according server's locale settings). All the values can be  followed by the sorting direction, either @desc@ and @asc@. By default the option isn't used (unset), and the values are returned in the order they were supplied.
 Example: @sort="regular asc"@ Default: @""@
 
 p. *offset*
@@ -63,34 +63,38 @@ The number of items to skip. Default is @0@ (none).
 Example: @offset="5"@ Default: @"0"@
 
 p. *limit*
-The number of items to display. By default there is no limit, and all items are returned.
-Example: @limit="10"@ Default: @""@
+The number of items are displayed. By default there is no limit, and all items are returned.
+Example: @limit="10"@ Default: undefined
 
 p. *wraptag*
-The (X)HTML tag, without brackets used to wrap the output. Default is unset.
+The (X)HTML tag (without brackets) used to wrap the output.
 Example: @wraptag="div"@ Default: @""@
 
 p. *break*
-The (X)HTML tag (without brackets) or string to separate list items. Default is unset.
+The (X)HTML tag (without brackets) or a string used to separate list items.
 Example: @"break="br"@ Default: @""@
 
 p. *class*
-The (X)HTML class applied to the wraptag. Default is unset.
+The (X)HTML class applied to the @wraptag@. Default is unset.
 Example: @class="plugin"@ Default: @""@
 
 p. *assign*
-Assigns values as Textpattern's "variables":http://textpattern.net/wiki/index.php?title=variable. Takes comma-separated list of variable names, @variable1, variable2, @variable3, ...@.
-Example: @assign="var"@ Default: @unset@
+Assigns values as Textpattern's "variables":http://textpattern.net/wiki/index.php?title=variable. Takes a comma-separated list of variable names, @variable1, variable2, @variable3, ...@.
+Example: @assign="label, value"@ Default: @unset@
 
-h3. rah_repeat_value - @<txp:rah_repeat_value />@
+h3. rah_repeat_value
 
-p. Is a single tag, used to display the provided values. It should be used wrapped inside @<txp:rah_repeat></txp:rah_repeat>@ tags. The tag has a single attribute, @escape@.
+bc. <txp:rah_repeat value="value1, value2, ...">
+	<txp:rah_repeat_value />
+</txp:rah_repeat>
+
+p. Rah_repeat_value a single tag, used to display a iterated value. The tag should be used inside a @<txp:rah_repeat></txp:rah_repeat>@ block. The tag has a single attribute, @escape@.
 
 p. *escape*
 If set to @1@, HTML and Textpattern markup are escaped, and special characters are converted to HTML entities. By default this option is on.
 Example: @escape="0"@ Default: @"1"@
 
-h3. rah_repeat_if_first - @<txp:rah_repeat_if_first>@
+h3. rah_repeat_if_first
 
 bc. <txp:rah_repeat value="value1, value2, ...">
 	<txp:rah_repeat_if_first>
@@ -100,7 +104,7 @@ bc. <txp:rah_repeat value="value1, value2, ...">
 
 p. The tag, @<txp:rah_repeat_if_first>@, is a container tag, and has no attributes. It's a conditional tag that checks if the current item is the first one.
 
-h3. rah_repeat_if_last - @<txp:rah_repeat_if_last>@
+h3. rah_repeat_if_last
 
 bc. <txp:rah_repeat value="value1, value2, ...">
 	<txp:rah_repeat_if_last>
@@ -120,7 +124,7 @@ bc. <txp:rah_repeat wraptag="ul" break="li" value="dog,cat,human">
 	A <txp:rah_repeat_value />.
 </txp:rah_repeat>
 
-Returns:
+p. The above returns:
 
 bc. <ul>
 	<li>A dog.</li>
@@ -143,7 +147,7 @@ bc. <txp:rah_repeat value='<txp:custom_field name="MyCustomFieldName" />'>
 	</object>
 </txp:rah_repeat>
 
-p. Above code would output 4 embedded players (one for each clip), displaying the videos specified with the custom field.
+p. The above code would output 4 embedded players (one for each clip), displaying the videos specified with the custom field.
 
 h3. Taking advantage of offset and limit attributes
 
@@ -161,7 +165,7 @@ bc. <txp:rah_repeat value='<txp:custom_field name="MyCustomFieldName" />' limit=
 	<txp:rah_repeat_value />
 </txp:rah_repeat>
 
-h3. Repeat inside repeat.
+h3. Repeat inside repeat
 
 bc. <txp:rah_repeat value="group1|item1|item2,group2|item1|item2">
 	<ul>
@@ -184,7 +188,7 @@ bc. <ul>
 	<li>item2</li>
 </ul>
 
-h3. Basic usage of if_first and if_last tags
+h3. Basic usage of the if_first and the if_last tags
 
 p. With the conditional tags @<txp:rah_repeat_if_first />@ and @<txp:rah_repeat_if_last>@ we can test which value is the first and which is the last.
 
@@ -194,7 +198,7 @@ bc. <txp:rah_repeat value="item1,item2,item3,item4,item5" wraptag="ul" break="li
 	<txp:rah_repeat_value />
 </txp:rah_repeat>
 
-Returns:
+p. Returns:
 
 bc. <ul>
 	<li>First: item1</li>
@@ -208,7 +212,9 @@ h3. Trim beginning and ending whitespace from the value
 
 bc. <txp:rah_repeat value="foo, bar" trim="1" break=","><txp:rah_repeat_value /></txp:rah_repeat>
 
-Returns: @foo,bar@ (notice the missing space before bar).
+p. The above returns the value without whitespace (notice the missing space before the bar):
+
+bc. foo,bar
 
 h3. Remove duplicate values
 
@@ -236,7 +242,7 @@ p. Returns: @foobar@
 
 h3. Using range attribute
 
-p. With @range@ it's possible to create a range of elements with out specifying each. For example generating list of alphabet (A-z) can be done with range.
+p. With the @range@ it's possible to create a range of elements with out specifying each. For example generating list of alphabet (A-z) can be done with range.
 
 bc. <txp:rah_repeat range="a, z, 1">
 	<txp:rah_repeat_value />
@@ -256,17 +262,15 @@ bc. <txp:rah_repeat range="0, 6, 2">
 
 h3. Assign variables with assign attribute
 
-p. @assign@ attribute allows exporting split values as "variables":http://textpattern.net/wiki/index.php?title=variable.
+p. The @assign@ attribute allows exporting split values as "variables":http://textpattern.net/wiki/index.php?title=variable.
 
-bc.. <txp:rah_repeat value="red,water,male" assign="color, drink, sex" />
+bc.. <txp:rah_repeat value="JavaScript,jQuery,1.8.0" assign="language, framework, version" />
 
-Color: <txp:variable name="color" />
-Drink: <txp:variable name="drink" />
+<txp:variable name="language" />
+<txp:variable name="framework" />
 
-<txp:if_variable name="sex" value="male">
-	M
-<txp:else />
-	W
+<txp:if_variable name="version" value="1.8.0">
+	Version is 1.8.0.
 </txp:if_variable>
 
 h2. Changelog
