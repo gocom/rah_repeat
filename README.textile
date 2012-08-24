@@ -142,7 +142,7 @@ h3. Simple usage example
 
 p. This example turns simple comma separated list of @dog,cat,human@ into a HTML list.
 
-bc. <txp:rah_repeat wraptag="ul" break="li" value="dog,cat,human">
+bc. <txp:rah_repeat wraptag="ul" break="li" value="dog, cat, human">
 	A <txp:rah_repeat_value />.
 </txp:rah_repeat>
 
@@ -158,7 +158,7 @@ h3. Using tags as values
 
 p. As of Textpattern version 4.0.7, you can use tags inside tags.
 
-p. Let's say that you have comma separated list of items stored inside article's "custom field":http://textpattern.net/wiki/index.php?title=custom_field. For example, list of "Nameless" video service's video IDs (@ID1,ID2,ID3,ID4@), and you want to embed each of those as a playable video.
+p. Let's say that you have comma separated list of items stored inside article's "custom field":http://textpattern.net/wiki/index.php?title=custom_field. For example, list of "Nameless" video service's video IDs (@ID1, ID2, ID3, ID4@), and you want to embed each of those as a playable video.
 
 p. We pass the custom field hosting the video IDs to rah_repeat tag (with the @value@ attribute), and place the video player code inside the container:
 
@@ -189,7 +189,7 @@ bc. <txp:rah_repeat value='<txp:custom_field name="MyCustomFieldName" />' limit=
 
 h3. Repeat inside repeat
 
-bc. <txp:rah_repeat value="group1|item1|item2,group2|item1|item2">
+bc. <txp:rah_repeat value="group1|item1|item2, group2|item1|item2">
 	<ul>
 		<txp:rah_repeat value='<txp:rah_repeat_value />' delimiter="|">
 			<li><txp:rah_repeat_value /></li>
@@ -214,7 +214,7 @@ h3. Basic usage of the if_first and the if_last tags
 
 p. With the conditional tags @<txp:rah_repeat_if_first />@ and @<txp:rah_repeat_if_last>@ we can test which value is the first and which is the last.
 
-bc. <txp:rah_repeat value="item1,item2,item3,item4,item5" wraptag="ul" break="li">
+bc. <txp:rah_repeat value="item1, item2, item3, item4, item5" wraptag="ul" break="li">
 	<txp:rah_repeat_if_first>First: </txp:rah_repeat_if_first>
 	<txp:rah_repeat_if_last>Last: </txp:rah_repeat_if_last>
 	<txp:rah_repeat_value />
@@ -232,7 +232,7 @@ bc. <ul>
 
 h3. Remove duplicate values
 
-bc. <txp:rah_repeat break="," duplicates="1" value="foo,bar,bar,foo,bar,bar,foo,foobar">
+bc. <txp:rah_repeat break="," duplicates="1" value="foo, bar, bar, foo, bar, bar, foo, foobar">
 	<txp:rah_repeat_value />
 </txp:rah_repeat>
 
@@ -240,7 +240,7 @@ p. Returns: @foo, bar, foobar@
 
 h3. Arrange the values from lowest to highest
 
-bc. <txp:rah_repeat break="," value="b,a,c," sort="regular asc">
+bc. <txp:rah_repeat break="," value="b, a, c," sort="regular asc">
 	<txp:rah_repeat_value />
 </txp:rah_repeat>
 
@@ -248,7 +248,7 @@ p. Returns: @a, b, c@
 
 h3. Excluding values
 
-bc. <txp:rah_repeat value="foo,bar,foobar" exclude="foo,bar">
+bc. <txp:rah_repeat value="foo, bar, foobar" exclude="foo,bar">
 	<txp:rah_repeat_value />
 </txp:rah_repeat>
 
@@ -278,7 +278,7 @@ h3. Assign variables with assign attribute
 
 p. The @assign@ attribute allows exporting split values as "variables":http://textpattern.net/wiki/index.php?title=variable.
 
-bc.. <txp:rah_repeat value="JavaScript,jQuery,1.8.0" assign="language, framework, version" />
+bc.. <txp:rah_repeat value="JavaScript, jQuery, 1.8.0" assign="language, framework, version" />
 
 <txp:variable name="language" />
 <txp:variable name="framework" />
