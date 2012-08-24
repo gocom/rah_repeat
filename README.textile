@@ -289,6 +289,11 @@ bc.. <txp:rah_repeat value="JavaScript, jQuery, 1.8.0" assign="language, framewo
 
 h2. Changelog
 
+h3. Version 0.9 - upcoming
+
+* Updated: help file.
+* Now requires Textpattern 4.5.0 or newer.
+
 h3. Version 0.8 - 2012/08/24
 
 * Fixed: made the @sort@ attribute's direction optional.
