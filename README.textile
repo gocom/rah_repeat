@@ -289,7 +289,7 @@ bc.. <txp:rah_repeat value="JavaScript, jQuery, 1.8.0" assign="language, framewo
 
 h2. Changelog
 
-h3. Version 0.8 - upcoming
+h3. Version 0.8 - 2012/08/24
 
 * Fixed: made the @sort@ attribute's direction optional.
 * Added: @exclude@ can now take and exclude empty strings (@""@) and zeros (@0@).
