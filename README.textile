@@ -1,5 +1,7 @@
 h1. rah_repeat
 
+p. "Project page":http://rahforum.biz/plugins/rah_repeat | "Twitter":http://twitter.com/gocom | "GitHub":https://github.com/gocom/rah_repeat | "Support forum":http://forum.textpattern.com/viewtopic.php?id=32384 | "Donate":http://rahforum.biz/donate/rah_repeat
+
 p. Rah_repeat is a "Textpattern CMS":http://www.textpattern.com plugin used for iterations. The plugin splits a provided value to smaller chunks and iterates overs, just like you would expect from a for each loop in any programming language. With the plugin you can turn a simple comma-separated list of values into advanced HTML output, or extract parts of a value as "variables":http://textpattern.net/wiki/index.php?title=variable.
 
 h2. Requirements
