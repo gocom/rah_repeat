@@ -1,6 +1,6 @@
 h1. rah_repeat
 
-p. Split, loop and repeat a value by a value. With this "Textpattern":http://www.textpattern.com plugin, you can turn a simple list of values into advanced HTML output. Split markup half, and represent halves in different places on the page. Do more, use less code by using the same code again.
+p. Rah_repeat is a "Textpattern CMS":http://www.textpattern.com plugin used for iterations. Split, loop and repeat a value by a value. With the plugin you can turn a simple list of values into advanced HTML output. Split markup half, and represent halves in different places on the page. Do more, use less code by using the same code again.
 
 h2. List of features
 
@@ -25,7 +25,23 @@ p. Rah_repeat's installation follows the standard plugin installation steps.
 
 h2. Basics
 
-p. Todo.
+bc. <txp:rah_repeat range=min, max, step" value="value1, value2, ..." assign="variable1, variable2, ...">
+	...contained statement...
+</txp:rah_repeat>
+
+p. Rah_repeat's main job is primely iterating over values. Its iteration power can used to create lists or extract subsets of data. The plugin can come very handy when you have a "custom field":http://textpattern.net/wiki/index.php?title=custom_field that contains comma-separated list of values which you want to present as a HTML list or extract as individual separate values.
+
+p. The values you want to iterate over are provided to the tag with the @value@ attribute, each individual subset value separated from each other with the @delimiter@, defaulting to a comma. The current value that is being iterated over can be returned using the @rah_repeat_value@ tag, wrapped in @rah_repeat@ block.
+
+bc. <txp:rah_repeat value="red, blue, green">
+	<txp:rah_repeat_value />
+</txp:rah_repeat>
+
+p. In addition to iterating over values and creating lists, the tag can also be used to extract values and assign each one to a "variable":http://textpattern.net/wiki/index.php?title=variable. This can be done using the @rah_repeat@ tag's @assign@ attribute. The attribute takes a comma-separated list of variable names which will be created, each containing one of the values.
+
+bc. <txp:rah_repeat value="red, blue, green" assign="color1, color2, color3" />
+
+p. The above would extra each of the colors as a variable. These variables would be named as @color1@, @color2@ and @color3@, where @<txp:variable name="color1" />@ would return @red@.
 
 h2. Tags and attributes
 
@@ -37,7 +53,7 @@ bc. <txp:rah_repeat value="value1, value2, ...">
 	...contained statement...
 </txp:rah_repeat>
 
-p. The tag, @<txp:rah_repeat>@, is the plugin's main tag. It's a container tag used for iterations, repeating and listing performed with the given values. Attributes for the tag are as follows.
+p. The @<txp:rah_repeat>@ tag is the plugin's main tag. It's a container tag used for iterations, repeating and listing performed with the given values. Attributes for the tag are as follows.
 
 p. *value*
 Sets the values that are passed to the tag. Multiple values are separated with the @delimiter@ which by default is a comma (@,@). This attribute or either @range@ is required.
