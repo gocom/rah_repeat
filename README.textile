@@ -34,7 +34,7 @@ bc. <txp:rah_repeat value="red, blue, green" wraptag="ul" break="li">
 	<txp:rah_repeat_value />
 </txp:rah_repeat>
 
-p. In addition to iterating over values and creating lists, the tag can also be used to extract values and assign each one to a "variable":http://textpattern.net/wiki/index.php?title=variable tag. This can be done using the @rah_repeat@ tag's @assign@ attribute. The attribute takes a comma-separated list of variable names which will be created, each containing one of the values.
+p. In addition to iterating over values and creating lists, the tag can also be used to extract values and assign each one to a "variable":http://textpattern.net/wiki/index.php?title=variable tag. This can be done using the @rah_repeat@ tag's @assign@ attribute. The attribute takes a comma-separated list of variable names that will be created, each containing one of the values.
 
 bc. <txp:rah_repeat value="red, blue, green" assign="color1, color2, color3" />
 
