@@ -64,6 +64,10 @@ p. *delimiter*
 Sets the delimiter that is used to split the provided @value@ into a list. Default delimiter is comma (@,@).
 Example: @delimiter="|"@ Default: @","@
 
+p. *assign*
+Assigns values as Textpattern's "variables":http://textpattern.net/wiki/index.php?title=variable. Takes a comma-separated list of variable names, @variable1, variable2, @variable3, ...@.
+Example: @assign="label, value"@ Default: @unset@
+
 p. *duplicates*
 Removes duplicate values from the list. If the attribute is set to @1@, only first occurrence of the value is used and duplicates are stripped off.
 Example: @duplicates="1"@ Default: @"0"@
@@ -99,10 +103,6 @@ Example: @"break="br"@ Default: @""@
 p. *class*
 The (X)HTML class applied to the @wraptag@. Default is unset.
 Example: @class="plugin"@ Default: @""@
-
-p. *assign*
-Assigns values as Textpattern's "variables":http://textpattern.net/wiki/index.php?title=variable. Takes a comma-separated list of variable names, @variable1, variable2, @variable3, ...@.
-Example: @assign="label, value"@ Default: @unset@
 
 h3. rah_repeat_value
 
