@@ -109,7 +109,7 @@
 	}
 
 /**
- * Returns current value
+ * Returns the current value
  * @return string
  */
 
@@ -132,7 +132,7 @@
 	}
 
 /**
- * Conditional tag for testing if the item is first
+ * Checks if the item is the first
  * @return string User-markup
  */
 
@@ -142,7 +142,7 @@
 	}
 
 /**
- * Conditional tag for testing if the item is last
+ * Checks if the item is the last
  * @return string User-markup
  */
 
