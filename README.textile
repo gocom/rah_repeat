@@ -230,14 +230,6 @@ bc. <ul>
 	<li>Last: item5</li>
 </ul>
 
-h3. Trim beginning and ending whitespace from the value
-
-bc. <txp:rah_repeat value="foo, bar" trim="1" break=","><txp:rah_repeat_value /></txp:rah_repeat>
-
-p. The above returns the value without whitespace (notice the missing space before the bar):
-
-bc. foo,bar
-
 h3. Remove duplicate values
 
 bc. <txp:rah_repeat break="," duplicates="1" value="foo,bar,bar,foo,bar,bar,foo,foobar">
