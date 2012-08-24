@@ -304,21 +304,21 @@ h3. Version 0.8 - upcoming
 
 h3. Version 0.7 - 2011/12/02
 
-* Added attribute @trim@. When set to @1@, provided values are trimmed from surrounding whitespace.
+* Added: @trim@ attribute. When set to @1@, provided values are trimmed from surrounding whitespace.
 * Fixed: "locale" sorting option. Previously it sorted values as a string, not by locale options.
 * Changed: limit's default to NULL. Leave limit unset if you only want offset without limit, or use a high value.
 * Improved: Better offset and limit functionality. Now slices the list of values before staring to build the markup.
 
 h3. Version 0.6 - 2010/05/09
 
-* Added attribute: @exclude@.
+* Added: @exclude@ attribute.
 * Fixed non-working @<txp:rah_repeat_if_last>@ tag. Issue was caused by v0.5 update.
 
 h3. Version 0.5 - 2010/05/08
 
 * Changed offset's default value from @unset@ to @0@.
-* Added attribute: @sort@.
-* Added attribute: @duplicates@.
+* Added: @sort@ attribute.
+* Added: @duplicates@ attribute.
 
 h3. Version 0.4 - 2009/11/30
 
@@ -328,14 +328,14 @@ h3. Version 0.4 - 2009/11/30
 
 h3. Version 0.3 - 2009/11/28
 
-* Added attribute: @wraptag@.
-* Added attribute: @break@.
-* Added attribute: @class@.
+* Added: @wraptag@ attribute.
+* Added: @break@ attribute.
+* Added: @class@ attribute.
 
 h3. Version 0.2 - 2009/11/23
 
-* Added attribute: @limit@.
-* Added attribute: @offset@.
+* Added: @limit@ attribute.
+* Added: @offset@ attribute.
 
 h3. Version 0.1 - 2009/11/20
 
