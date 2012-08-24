@@ -232,7 +232,7 @@ bc. <ul>
 
 h3. Remove duplicate values
 
-bc. <txp:rah_repeat break="," duplicates="1" value="foo, bar, bar, foo, bar, bar, foo, foobar">
+bc. <txp:rah_repeat duplicates="1" value="foo, bar, bar, foo, bar, bar, foo, foobar">
 	<txp:rah_repeat_value />
 </txp:rah_repeat>
 
@@ -240,7 +240,7 @@ p. Returns: @foo, bar, foobar@
 
 h3. Arrange the values from lowest to highest
 
-bc. <txp:rah_repeat break="," value="b, a, c" sort="regular asc">
+bc. <txp:rah_repeat value="b, a, c" sort="regular asc">
 	<txp:rah_repeat_value />
 </txp:rah_repeat>
 
