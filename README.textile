@@ -312,7 +312,7 @@ h3. Version 0.7 - 2011/12/02
 h3. Version 0.6 - 2010/05/09
 
 * Added: @exclude@ attribute.
-* Fixed non-working @<txp:rah_repeat_if_last>@ tag. Issue was caused by v0.5 update.
+* Fixed: @<txp:rah_repeat_if_last>@ tag. Issue was caused by v0.5 update.
 
 h3. Version 0.5 - 2010/05/08
 
