@@ -2,11 +2,6 @@ h1. rah_repeat
 
 p. Rah_repeat is a "Textpattern CMS":http://www.textpattern.com plugin used for iterations. Split, loop and repeat a value by a value. With the plugin you can turn a simple list of values into advanced HTML output. Split markup half, and represent halves in different places on the page. Do more, use less code by using the same code again.
 
-h2. List of features
-
-* Split list of values into tiny blocks and represent them individually.
-* Exclude values, remove duplicates, and do custom lists.
-
 h2. Requirements
 
 p. Rah_repeat's minimum requirements:
