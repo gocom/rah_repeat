@@ -1,6 +1,6 @@
 h1. rah_repeat
 
-p. Split, loop and repeat a value by value. With this "Textpattern":http://www.textpattern.com plugin, you can turn a simple list of values into advanced HTML output. Split markup half, and represent halves in different places on the page. Do more, use less code by using the same code again.
+p. Split, loop and repeat a value by a value. With this "Textpattern":http://www.textpattern.com plugin, you can turn a simple list of values into advanced HTML output. Split markup half, and represent halves in different places on the page. Do more, use less code by using the same code again.
 
 h2. List of features
 
@@ -9,14 +9,23 @@ h2. List of features
 
 h2. Requirements
 
+p. Rah_repeat's minimum requirements:
+
 * Textpattern 4.5.0 or newer.
 * PHP 5.2 or newer.
 
-h2. Installation and usage
+h2. Installing
 
-p. The general behavior stands: paste plugin code to the plugin installer textarea and run the automatic setup. Then just activate the plugin and you are ready to use new tags that plugin includes like others.
+p. Rah_function's installation follows the standard plugin installation steps.
 
-p. Basically just put wrap (contain) content in your pages/forms/articles with @<txp:rah_repeat></txp:rah_repeat>@ container tags, and customize output with your desired attributes. Contained content will be repeated and supplied with defined value(s).
+# Download the plugin installation code.
+# Copy and paste the installation code into the _Install plugin_ box of your Textpattern Plugin pane.
+# Run the automated setup.
+# After the setup is done, activate the plugin. Done.
+
+h2. Basics
+
+p. Todo.
 
 h2. Tags and attributes
 
