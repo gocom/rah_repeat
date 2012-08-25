@@ -96,6 +96,7 @@
 					'string' => $string,
 					'first' => ($i == 1),
 					'last' => ($count == $i),
+					'index' => $i,
 				);
 
 			$out[] = parse($thing);
@@ -116,10 +117,15 @@
 		
 		extract(lAtts(array(
 			'escape' => 0,
+			'index' => 0,
 		), $atts));
 		
 		if(!isset($rah_repeat['string'])) {
 			return;
+		}
+		
+		if($index) {
+			return $rah_repeat['index'];
 		}
 		
 		if($escape) {
