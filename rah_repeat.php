@@ -33,8 +33,7 @@
 		), $atts));
 		
 		if($range && strpos($range, ',')) {
-			$r = array_merge(array(0, 10, 1), do_list($range));
-			$values = range($r[0], $r[1], $r[2]);
+			$values = call_user_func_array('range', do_list($range));
 		}
 		
 		else {
