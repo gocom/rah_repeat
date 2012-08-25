@@ -144,9 +144,9 @@ h2. Examples
 
 h3. Simple usage example
 
-p. This example turns simple comma separated list of @dog,cat,human@ into a HTML list.
+p. This example turns simple comma separated list of @dog, cat, butterfly@ into a HTML list.
 
-bc. <txp:rah_repeat wraptag="ul" break="li" value="dog, cat, human">
+bc. <txp:rah_repeat value="dog, cat, butterfly" wraptag="ul" break="li">
 	A <txp:rah_repeat_value />.
 </txp:rah_repeat>
 
@@ -155,7 +155,7 @@ p. The above returns:
 bc. <ul>
 	<li>A dog.</li>
 	<li>A cat.</li>
-	<li>A human.</li>
+	<li>A butterfly.</li>
 </ul>
 
 h3. Using tags as values
@@ -252,7 +252,7 @@ p. Returns: @a, b, c@
 
 h3. Excluding values
 
-bc. <txp:rah_repeat value="foo, bar, foobar" exclude="foo,bar">
+bc. <txp:rah_repeat value="foo, bar, foobar" exclude="foo, bar">
 	<txp:rah_repeat_value />
 </txp:rah_repeat>
 
