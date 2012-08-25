@@ -289,7 +289,7 @@ bc.. <txp:rah_repeat value="JavaScript, jQuery, 1.8.0" assign="language, framewo
 
 h2. Changelog
 
-h3. Version 0.9 - upcoming
+h3. Version 0.8.1 - 2012/08/25
 
 * Fixed: @range@ attribute. It ignored any options and always created an list of 1-10.
 
