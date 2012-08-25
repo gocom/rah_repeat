@@ -8,7 +8,7 @@ h2. Requirements
 
 p. Rah_repeat's minimum requirements:
 
-* Textpattern 4.4.1 or newer.
+* Textpattern 4.5.0 or newer.
 * PHP 5.2 or newer.
 
 h2. Installing
@@ -292,6 +292,11 @@ bc.. <txp:rah_repeat value="JavaScript, jQuery, 1.8.0" assign="language, framewo
 </txp:if_variable>
 
 h2. Changelog
+
+h3. Version 0.9 - upcoming
+
+* Added: @index@ attribute to the @rah_repeat_value@ tag.
+* Now requires Textpattern 4.5.0 or newer.
 
 h3. Version 0.8.1 - 2012/08/25
 
