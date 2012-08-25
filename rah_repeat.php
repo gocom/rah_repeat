@@ -123,7 +123,7 @@
 		}
 		
 		if($escape) {
-			return txpspecialchars($rah_repeat['string']);
+			return htmlspecialchars($rah_repeat['string']);
 		}
 
 		return $rah_repeat['string'];
