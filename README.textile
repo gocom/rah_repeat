@@ -110,11 +110,15 @@ bc. <txp:rah_repeat value="value1, value2, ...">
 	<txp:rah_repeat_value />
 </txp:rah_repeat>
 
-p. Rah_repeat_value a single tag, used to display a iterated value. The tag should be used inside a @<txp:rah_repeat></txp:rah_repeat>@ block. The tag has a single attribute, @escape@.
+p. Rah_repeat_value a single tag, used to display a iterated value. The tag should be used inside a @<txp:rah_repeat></txp:rah_repeat>@ block.
 
 p. *escape*
 If set to @1@, HTML and Textpattern markup are escaped, and special characters are converted to HTML entities. By default this option is off.
 Example: @escape="1"@ Default: @"0"@
+
+p. *index*
+If set to @1@, the tag returns the iterated value's index number. The index starts from 1.
+Example: @index="1"@ Default: @"0"@
 
 h3. rah_repeat_if_first
 
