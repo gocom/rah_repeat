@@ -129,7 +129,7 @@
 		}
 		
 		if($escape) {
-			return htmlspecialchars($rah_repeat['string']);
+			return txpspecialchars($rah_repeat['string']);
 		}
 
 		return $rah_repeat['string'];
