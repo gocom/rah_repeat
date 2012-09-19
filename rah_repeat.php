@@ -13,23 +13,23 @@
  * http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-	function rah_repeat($atts, $thing=NULL) {
+	function rah_repeat($atts, $thing=null) {
 		global $rah_repeat, $variable;
 		
 		extract(lAtts(array(
 			'delimiter' => ',',
 			'value' => '',
-			'limit' => NULL,
+			'limit' => null,
 			'offset' => 0,
 			'wraptag' => '',
 			'break' => '',
 			'class' => '',
 			'duplicates' => 0,
 			'sort' => '',
-			'exclude' => NULL,
+			'exclude' => null,
 			'trim' => 1,
 			'range' => '',
-			'assign' => NULL,
+			'assign' => null,
 		), $atts));
 		
 		if($range && strpos($range, ',')) {
@@ -48,7 +48,7 @@
 			$values = array_unique($values);
 		}
 		
-		if($exclude !== NULL) {
+		if($exclude !== null) {
 			$exclude = explode($delimiter, $exclude);
 			
 			if($trim) {
@@ -71,14 +71,14 @@
 		
 		$values = array_slice($values, $offset, $limit);
 		
-		if($assign !== NULL) {
+		if($assign !== null) {
 			foreach(do_list($assign) as $key => $var) {
 				$value = isset($values[$key]) ? $values[$key] : '';
 				$variable[$var] = $value;
 			}
 		}
 		
-		if(empty($values) || $thing === NULL) {
+		if(!$values || $thing === null) {
 			return;
 		}
 
