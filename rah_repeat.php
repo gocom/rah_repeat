@@ -1,16 +1,24 @@
 <?php
 
 /**
- * Rah_repeat plugin for Textpattern CMS
+ * Rah_repeat plugin for Textpattern CMS.
  *
- * @author Jukka Svahn
- * @date 2009-
+ * @author  Jukka Svahn
+ * @date    2009-
  * @license GNU GPLv2
- * @link http://rahforum.biz/plugins/rah_repeat
+ * @link    http://rahforum.biz/plugins/rah_repeat
  *
- * Copyright (C) 2012 Jukka Svahn <http://rahforum.biz>
+ * Copyright (C) 2012 Jukka Svahn http://rahforum.biz
  * Licensed under GNU Genral Public License version 2
  * http://www.gnu.org/licenses/gpl-2.0.html
+ */
+
+/**
+ * Creates a list from the given values.
+ *
+ * @param  array  $atts
+ * @param  string $thing
+ * @return string
  */
 
 	function rah_repeat($atts, $thing = null)
@@ -119,7 +127,9 @@
 	}
 
 /**
- * Returns the current value
+ * Returns the current value.
+ *
+ * @param  array  $atts
  * @return string
  */
 
@@ -151,8 +161,11 @@
 	}
 
 /**
- * Checks if the item is the first
- * @return string User-markup
+ * Checks if the item is the first.
+ *
+ * @param  array  $atts
+ * @param  string $thing
+ * @return string
  */
 
 	function rah_repeat_if_first($atts, $thing = '')
@@ -162,8 +175,11 @@
 	}
 
 /**
- * Checks if the item is the last
- * @return string User-markup
+ * Checks if the item is the last.
+ *
+ * @param  array  $atts
+ * @param  string $thing
+ * @return string
  */
 
 	function rah_repeat_if_last($atts, $thing = '')
