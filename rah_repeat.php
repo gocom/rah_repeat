@@ -13,72 +13,83 @@
  * http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-	function rah_repeat($atts, $thing=null) {
+	function rah_repeat($atts, $thing = null)
+	{
 		global $rah_repeat, $variable;
-		
+
 		extract(lAtts(array(
-			'delimiter' => ',',
-			'value' => '',
-			'limit' => null,
-			'offset' => 0,
-			'wraptag' => '',
-			'break' => '',
-			'class' => '',
+			'delimiter'  => ',',
+			'value'      => '',
+			'limit'      => null,
+			'offset'     => 0,
+			'wraptag'    => '',
+			'break'      => '',
+			'class'      => '',
 			'duplicates' => 0,
-			'sort' => '',
-			'exclude' => null,
-			'trim' => 1,
-			'range' => '',
-			'assign' => null,
+			'sort'       => '',
+			'exclude'    => null,
+			'trim'       => 1,
+			'range'      => '',
+			'assign'     => null,
 		), $atts));
-		
-		if($range && strpos($range, ',')) {
+
+		if ($range && strpos($range, ','))
+		{
 			$values = call_user_func_array('range', do_list($range));
 		}
-		
-		else {
+		else
+		{
 			$values = explode($delimiter, $value);
 		}
-		
-		if($trim) {
+
+		if ($trim)
+		{
 			$values = doArray($values, 'trim');
 		}
-		
-		if($duplicates) {
+
+		if ($duplicates)
+		{
 			$values = array_unique($values);
 		}
-		
-		if($exclude !== null) {
+
+		if ($exclude !== null)
+		{
 			$exclude = explode($delimiter, $exclude);
-			
-			if($trim) {
+
+			if ($trim)
+			{
 				$exclude = doArray($exclude, 'trim');
 			}
-			
+
 			$values = array_diff($values, $exclude);
 		}
-		
-		if($sort && $sort = doArray(doArray(explode(' ', trim($sort), 2), 'trim'), 'strtoupper')) {
-		
-			if(count($sort) == 2 && defined('SORT_'.$sort[0])) {
+
+		if ($sort && $sort = doArray(doArray(explode(' ', trim($sort), 2), 'trim'), 'strtoupper'))
+		{
+			if (count($sort) == 2 && defined('SORT_'.$sort[0]))
+			{
 				sort($values, constant('SORT_'.$sort[0]));
 			}
-			
-			if(end($sort) == 'DESC') {
+
+			if (end($sort) == 'DESC')
+			{
 				$values = array_reverse($values);
 			}
 		}
-		
+
 		$values = array_slice($values, $offset, $limit);
-		
-		if($assign !== null) {
-			foreach(do_list($assign) as $key => $var) {
+
+		if ($assign !== null)
+		{
+			foreach (do_list($assign) as $key => $var)
+			{
 				$value = isset($values[$key]) ? $values[$key] : '';
 				$variable[$var] = $value;
 			}
 		}
-		
-		if(!$values || $thing === null) {
+
+		if (!$values || $thing === null)
+		{
 			return;
 		}
 
@@ -87,17 +98,17 @@
 		$i = 0;
 		$out = array();
 
-		foreach($values as $string) {
+		foreach ($values as $string)
+		{
 			$i++;
 			$parent = $rah_repeat;
 
-			$rah_repeat = 
-				array(
-					'string' => $string,
-					'first' => ($i == 1),
-					'last' => ($count == $i),
-					'index' => $i,
-				);
+			$rah_repeat = array(
+				'string' => $string,
+				'first'  => ($i == 1),
+				'last'   => ($count == $i),
+				'index'  => $i,
+			);
 
 			$out[] = parse($thing);
 			$rah_repeat = $parent;
@@ -112,23 +123,27 @@
  * @return string
  */
 
-	function rah_repeat_value($atts) {
+	function rah_repeat_value($atts)
+	{
 		global $rah_repeat;
-		
+
 		extract(lAtts(array(
 			'escape' => 0,
-			'index' => 0,
+			'index'  => 0,
 		), $atts));
-		
-		if(!isset($rah_repeat['string'])) {
+
+		if (!isset($rah_repeat['string']))
+		{
 			return;
 		}
-		
-		if($index) {
+
+		if ($index)
+		{
 			return $rah_repeat['index'];
 		}
-		
-		if($escape) {
+
+		if ($escape)
+		{
 			return txpspecialchars($rah_repeat['string']);
 		}
 
@@ -140,7 +155,8 @@
  * @return string User-markup
  */
 
-	function rah_repeat_if_first($atts, $thing='') {
+	function rah_repeat_if_first($atts, $thing = '')
+	{
 		global $rah_repeat;
 		return parse(EvalElse($thing, $rah_repeat['first'] == true));
 	}
@@ -150,8 +166,8 @@
  * @return string User-markup
  */
 
-	function rah_repeat_if_last($atts, $thing='') {
+	function rah_repeat_if_last($atts, $thing = '')
+	{
 		global $rah_repeat;
 		return parse(EvalElse($thing, $rah_repeat['last'] == true));
 	}
-?>
