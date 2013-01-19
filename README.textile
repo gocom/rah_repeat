@@ -9,7 +9,6 @@ h2. Requirements
 p. Rah_repeat's minimum requirements:
 
 * Textpattern 4.5.0 or newer.
-* PHP 5.2 or newer.
 
 h2. Installing
 
