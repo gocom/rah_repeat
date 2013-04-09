@@ -26,6 +26,7 @@
 		global $rah_repeat, $variable;
 
 		extract(lAtts(array(
+			'form'       => '',
 			'delimiter'  => ',',
 			'value'      => '',
 			'limit'      => null,
@@ -96,7 +97,7 @@
 			}
 		}
 
-		if (!$values || $thing === null)
+		if (!$values || ($thing === null && $form === ''))
 		{
 			return;
 		}
@@ -118,7 +119,15 @@
 				'index'  => $i,
 			);
 
-			$out[] = parse($thing);
+			if ($thing === null && $form !== '')
+			{
+				$out[] = parse_form($form);
+			}
+			else
+			{
+				$out[] = parse($thing);
+			}
+
 			$rah_repeat = $parent;
 		}
 
