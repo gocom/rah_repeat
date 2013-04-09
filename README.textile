@@ -294,6 +294,7 @@ h2. Changelog
 
 h3. Version 0.9 - upcoming
 
+* Added: @form@ attribute.
 * Added: @index@ attribute to the @rah_repeat_value@ tag.
 * Now requires Textpattern 4.5.0 or newer.
 
