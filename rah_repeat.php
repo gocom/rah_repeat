@@ -116,7 +116,7 @@
 				'string' => $string,
 				'first'  => ($i == 1),
 				'last'   => ($count == $i),
-				'index'  => $i,
+				'index'  => $i - 1,
 			);
 
 			if ($thing === null && $form !== '')
