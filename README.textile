@@ -91,6 +91,10 @@ p. *limit*
 The number of items are displayed. By default there is no limit, and all items are returned.
 Example: @limit="10"@ Default: undefined
 
+p. *form*
+Use specified form partial. By default contained statement is used instead of a form.
+Example: @form="price_column"@ Default: @""@
+
 p. *wraptag*
 The (X)HTML tag (without brackets) used to wrap the output.
 Example: @wraptag="div"@ Default: @""@
