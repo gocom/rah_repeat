@@ -99,7 +99,7 @@
 
 		if (!$values || ($thing === null && $form === ''))
 		{
-			return;
+			return '';
 		}
 
 		$count = count($values);
@@ -153,7 +153,7 @@
 
 		if (!isset($rah_repeat['string']))
 		{
-			return;
+			return '';
 		}
 
 		if ($index)
