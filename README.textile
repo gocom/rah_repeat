@@ -296,7 +296,7 @@ bc.. <txp:rah_repeat value="JavaScript, jQuery, 1.8.0" assign="language, framewo
 
 h2. Changelog
 
-h3. Version 1.0.0 - upcoming
+h3. Version 1.0.0 - 2013/04/23
 
 * Fixed: Return a empty string instead of NULL byte on halt.
 * Added: @form@ attribute.
