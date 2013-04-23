@@ -1,0 +1,25 @@
+{
+	"name": "rah/rah_repeat",
+	"description": "Iterations plugin for Textpattern",
+	"keywords": ["textpattern", "plugin", "iterate", "iterations", "loop"],
+	"homepage": "http://rahforum.biz/plugins/rah_repeat",
+	"license": "GPL-2.0",
+	"authors": [
+		{
+			"name": "Jukka Svahn",
+			"homepage": "http://rahforum.biz",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/gocom/rah_repeat/issues",
+		"forum": "http://forum.textpattern.com/viewtopic.php?id=32384",
+		"source": "https://github.com/gocom/rah_repeat"
+	},
+	"autoload": {
+		"files": []
+	},
+	"require": {
+		"php": ">=5.2.0"
+	}
+}
