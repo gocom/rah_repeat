@@ -296,7 +296,7 @@ bc.. <txp:rah_repeat value="JavaScript, jQuery, 1.8.0" assign="language, framewo
 
 h2. Changelog
 
-h3. Version 1.0.1 - upcoming
+h3. Version 1.0.1 - 2013/05/07
 
 * Composer package now uses "textpattern/lock":https://packagist.org/packages/textpattern/lock and "textpattern/installer":https://packagist.org/packages/textpattern/installer. The package installs to Textpattern without any extra configuration.
 
