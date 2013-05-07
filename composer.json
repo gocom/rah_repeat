@@ -4,6 +4,7 @@
 	"keywords": ["textpattern", "plugin", "iterate", "iterations", "loop"],
 	"homepage": "http://rahforum.biz/plugins/rah_repeat",
 	"license": "GPL-2.0",
+	"type": "textpattern-plugin",
 	"authors": [
 		{
 			"name": "Jukka Svahn",
@@ -20,6 +21,8 @@
 		"files": []
 	},
 	"require": {
-		"php": ">=5.2.0"
+		"php": ">=5.2.0",
+		"textpattern/lock": ">=4.5.0",
+		"textpattern/installer": "*"
 	}
 }
