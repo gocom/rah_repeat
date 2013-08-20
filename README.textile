@@ -12,7 +12,11 @@ Rah_repeat's minimum requirements:
 
 h2. Installing
 
-Rah_repeat's installation follows the standard plugin installation steps.
+Using "Composer":http://getcomposer.org:
+
+bc. $ composer require rah/rah_repeat
+
+Or from Textpattern web-based control panel:
 
 # Download the plugin installation code.
 # Copy and paste the installation code into the _Install plugin_ box of your Textpattern Plugin pane.
