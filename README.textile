@@ -52,12 +52,12 @@ bc. <txp:rah_repeat value="value1, value2, ...">
 The @<txp:rah_repeat>@ tag is the plugin's main tag. It's a container tag used for iterations. Attributes for it are as follows.
 
 *value*
-Sets the values that are passed to the tag. Multiple values are separated with the @delimiter@ which by default is a comma (@,@). This attribute or either @range@ is required.
-Example: @value="dog,cat,human"@ Default: @""@
+Sets the values that are passed to the tag. Multiple values are separated with the @delimiter@ which by default is a comma (@,@). If @range@ is set to @1@, individual values can declare dash-separated value ranges, e.g. @1-5, 8, 24-81, 9, 15@. Either this attribute or @range@ is required.
+Example: @value="dog, cat, human"@ Default: @""@
 
 *range*
-Creates a list of values containing a range of elements. Using @range@ overrides @value@ attribute. It works identically to PHP's "range":http://php.net/manual/en/function.range.php function and uses same sequence syntax as it. The attribute's value consists of three parts: @minimum@, @maximum@ and @step@, which are separated by a comma. All but @step@ are required.
-Example: @range="1, 10"@ Default: undefined
+Creates a list of values containing a range of elements, or if set to boolean @1@, enables the value ranges feature in the @value@ attribute. Using @range@ to create a list of values overrides @value@ attribute. It works identically to PHP's "range":http://php.net/manual/en/function.range.php function and uses same sequence syntax as it. The attribute's value consists of three parts: @minimum@, @maximum@ and @step@, each separated by a comma. All but @step@ are required. If the @range@ is set to @1@, it enables similar feature in the @value@ attribute's individual delimiter-separated values.
+Example: @range="1, 10"@ Default: _undefined_
 
 *delimiter*
 Sets the delimiter that is used to split the provided @value@ into a list. Default delimiter is comma (@,@).
@@ -73,7 +73,7 @@ Example: @duplicates="1"@ Default: @"0"@
 
 *exclude*
 Exclude certain values from the list. The attribute takes a comma (or @delimiter@, if @delimiter@ is changed) separated list of values.
-Example: @exclude="foo,bar"@ Default: undefined
+Example: @exclude="foo,bar"@ Default: _undefined_
 
 *trim*
 Trims values from extra whitespace. This can be particularly helpful if the provided values are from user-input (e.g. from an article field), or the values just have extra whitespace, and the resulting output has to be clean (i.e. used in XML, JavaScript or to a "variable":http://textpattern.net/wiki/index.php?title=variable comparison). If you want to keep whitespace intact, you can use this attribute. By default the option is on, and values are trimmed.
@@ -163,17 +163,12 @@ bc. <ul>
 
 h3. Using tags as values
 
-As of Textpattern version 4.0.7, you can use tags inside tags.
+Let's say that you have comma separated list of items stored inside article's "custom field":http://textpattern.net/wiki/index.php?title=custom_field. For example, list of YouTube's video IDs (@BUY6HGqYweQ, Vui-qGCfXuA, kF8I_r9XT7A, Z_2gbGXzFbs@) you wish to embed to your article.
 
-Let's say that you have comma separated list of items stored inside article's "custom field":http://textpattern.net/wiki/index.php?title=custom_field. For example, list of "Nameless" video service's video IDs (@ID1, ID2, ID3, ID4@), and you want to embed each of those as a playable video.
+We wrap the embed code in a rah_repeat tag pair and pass the custom field hosting the video IDs to the @value@ attribute:
 
-We pass the custom field hosting the video IDs to rah_repeat tag (with the @value@ attribute), and place the video player code inside the container:
-
-bc. <txp:rah_repeat value='<txp:custom_field name="MyCustomFieldName" />'>
-    <object width="600" height="380">
-        <param name="movie" value="http://example.com/v/<txp:rah_repeat_value />"></param>
-        <embed src="http://example.com/v/<txp:rah_repeat_value />" width="600" height="380"></embed>
-    </object>
+bc. <txp:rah_repeat value='<txp:custom_field name="youtube" />'>
+    <iframe width="560" height="315" src="//www.youtube.com/embed/<txp:rah_repeat_value />" frameborder="0" allowfullscreen></iframe>
 </txp:rah_repeat>
 
 The above code would output 4 embedded players (one for each clip), displaying the videos specified with the custom field.
@@ -196,12 +191,10 @@ bc. <txp:rah_repeat value='<txp:custom_field name="MyCustomFieldName" />' limit=
 
 h3. Repeat inside repeat
 
-bc. <txp:rah_repeat value="group1|item1|item2, group2|item1|item2">
-    <ul>
-        <txp:rah_repeat value='<txp:rah_repeat_value />' delimiter="|">
-            <li><txp:rah_repeat_value /></li>
-        </txp:rah_repeat>
-    </ul>
+bc. <txp:rah_repeat value="group1|item1|item2, group2|item1|item2" break="ul">
+    <txp:rah_repeat value='<txp:rah_repeat_value />' delimiter="|" break="li">
+        <txp:rah_repeat_value />
+    </txp:rah_repeat>
 </txp:rah_repeat>
 
 Returns two HTML lists:
@@ -239,7 +232,7 @@ bc. <ul>
 
 h3. Remove duplicate values
 
-bc. <txp:rah_repeat duplicates="1" value="foo, bar, bar, foo, bar, bar, foo, foobar">
+bc. <txp:rah_repeat duplicates="1" value="foo, bar, bar, foo, bar, bar, foo, foobar" break=",">
     <txp:rah_repeat_value />
 </txp:rah_repeat>
 
@@ -247,7 +240,7 @@ Returns: @foo, bar, foobar@
 
 h3. Arrange the values from lowest to highest
 
-bc. <txp:rah_repeat value="b, a, c" sort="regular asc">
+bc. <txp:rah_repeat value="b, a, c" sort="regular asc" break=",">
     <txp:rah_repeat_value />
 </txp:rah_repeat>
 
@@ -255,7 +248,7 @@ Returns: @a, b, c@
 
 h3. Excluding values
 
-bc. <txp:rah_repeat value="foo, bar, foobar" exclude="foo, bar">
+bc. <txp:rah_repeat value="foo, bar, foobar" exclude="foo, bar" break=",">
     <txp:rah_repeat_value />
 </txp:rah_repeat>
 
@@ -293,6 +286,16 @@ bc.. <txp:rah_repeat value="JavaScript, jQuery, 1.8.0" assign="language, framewo
 <txp:if_variable name="version" value="1.8.0">
     Version is 1.8.0.
 </txp:if_variable>
+
+h3. Using value ranges
+
+Value ranges can be enabled by setting @range@ attribute to @1@ instead of providing it a range. When enabled, you can use value ranges in the @value@ attribute.
+
+bc. <txp:rah_repeat value="1, 3-6, 9, 13-17" range="1" break=",">
+    <txp:rah_repeat_value />
+</txp:rah_repeat>
+
+Returns: @1, 3, 4, 5, 6, 13, 14, 15, 16, 17@.
 
 h2. Changelog
 
