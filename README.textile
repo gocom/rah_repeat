@@ -22,7 +22,7 @@ Rah_repeat's installation follows the standard plugin installation steps.
 h2. Basics
 
 bc. <txp:rah_repeat range="min, max, step" value="value1, value2, ..." assign="variable1, variable2, ...">
-	...contained statement...
+    ...contained statement...
 </txp:rah_repeat>
 
 Rah_repeat's main job is primely iterating over values. Its iteration power can used to create lists or extract subsets of data. The plugin can come very handy when you have a "custom field":http://textpattern.net/wiki/index.php?title=custom_field that contains comma-separated list of values which you want to present as a HTML list or extract as individual separate values.
@@ -30,7 +30,7 @@ Rah_repeat's main job is primely iterating over values. Its iteration power can 
 The values you want to iterate over are provided to the tag with the @value@ attribute, each individual subset value separated from each other with the @delimiter@, defaulting to a comma. The current value that is being iterated over can be returned using the @rah_repeat_value@ tag, wrapped in @rah_repeat@ block. The following would generate a HTML list from comma-separated list of @red, blue, green@.
 
 bc. <txp:rah_repeat value="red, blue, green" wraptag="ul" break="li">
-	<txp:rah_repeat_value />
+    <txp:rah_repeat_value />
 </txp:rah_repeat>
 
 In addition to iterating over values and creating lists, the tag can also be used to extract values and assign each one to a "variable":http://textpattern.net/wiki/index.php?title=variable tag. This can be done using the @rah_repeat@ tag's @assign@ attribute. The attribute takes a comma-separated list of variable names that will be created, each containing one of the values.
@@ -46,7 +46,7 @@ The plugin comes with a total of four tags. The main tag @rah_repeat@, a single 
 h3. rah_repeat
 
 bc. <txp:rah_repeat value="value1, value2, ...">
-	...contained statement...
+    ...contained statement...
 </txp:rah_repeat>
 
 The @<txp:rah_repeat>@ tag is the plugin's main tag. It's a container tag used for iterations. Attributes for it are as follows.
@@ -110,7 +110,7 @@ Example: @class="plugin"@ Default: @""@
 h3. rah_repeat_value
 
 bc. <txp:rah_repeat value="value1, value2, ...">
-	<txp:rah_repeat_value />
+    <txp:rah_repeat_value />
 </txp:rah_repeat>
 
 Rah_repeat_value a single tag, used to display a iterated value. The tag should be used inside a @<txp:rah_repeat></txp:rah_repeat>@ block.
@@ -126,9 +126,9 @@ Example: @index="1"@ Default: @"0"@
 h3. rah_repeat_if_first
 
 bc. <txp:rah_repeat value="value1, value2, ...">
-	<txp:rah_repeat_if_first>
-		Fist item.
-	</txp:rah_repeat_if_first>
+    <txp:rah_repeat_if_first>
+        Fist item.
+    </txp:rah_repeat_if_first>
 </txp:rah_repeat>
 
 The @<txp:rah_repeat_if_first>@ tag is a container, and has no attributes. It's a conditional tag that checks if the current item is the first one.
@@ -136,9 +136,9 @@ The @<txp:rah_repeat_if_first>@ tag is a container, and has no attributes. It's 
 h3. rah_repeat_if_last
 
 bc. <txp:rah_repeat value="value1, value2, ...">
-	<txp:rah_repeat_if_last>
-		Last item.
-	</txp:rah_repeat_if_last>
+    <txp:rah_repeat_if_last>
+        Last item.
+    </txp:rah_repeat_if_last>
 </txp:rah_repeat>
 
 The @<txp:rah_repeat_if_last>@ tag is a container, and has no attributes. It's a conditional tag that checks if the current item is the last one.
@@ -150,15 +150,15 @@ h3. Simple usage example
 p. This example turns simple comma separated list of @dog, cat, butterfly@ into a HTML list.
 
 bc. <txp:rah_repeat value="dog, cat, butterfly" wraptag="ul" break="li">
-	A <txp:rah_repeat_value />.
+    A <txp:rah_repeat_value />.
 </txp:rah_repeat>
 
 The above returns:
 
 bc. <ul>
-	<li>A dog.</li>
-	<li>A cat.</li>
-	<li>A butterfly.</li>
+    <li>A dog.</li>
+    <li>A cat.</li>
+    <li>A butterfly.</li>
 </ul>
 
 h3. Using tags as values
@@ -170,10 +170,10 @@ Let's say that you have comma separated list of items stored inside article's "c
 We pass the custom field hosting the video IDs to rah_repeat tag (with the @value@ attribute), and place the video player code inside the container:
 
 bc. <txp:rah_repeat value='<txp:custom_field name="MyCustomFieldName" />'>
-	<object width="600" height="380">
-		<param name="movie" value="http://example.com/v/<txp:rah_repeat_value />"></param>
-		<embed src="http://example.com/v/<txp:rah_repeat_value />" width="600" height="380"></embed>
-	</object>
+    <object width="600" height="380">
+        <param name="movie" value="http://example.com/v/<txp:rah_repeat_value />"></param>
+        <embed src="http://example.com/v/<txp:rah_repeat_value />" width="600" height="380"></embed>
+    </object>
 </txp:rah_repeat>
 
 The above code would output 4 embedded players (one for each clip), displaying the videos specified with the custom field.
@@ -183,38 +183,38 @@ h3. Taking advantage of offset and limit attributes
 First display two items, then some text between, two more items, some more text and then the rest of the items.
 
 bc. <txp:rah_repeat value='<txp:custom_field name="MyCustomFieldName" />' limit="2">
-	<txp:rah_repeat_value />
+    <txp:rah_repeat_value />
 </txp:rah_repeat>
 <p>Some text here.</p>
 <txp:rah_repeat value='<txp:custom_field name="MyCustomFieldName" />' offset="2" limit="4">
-	<txp:rah_repeat_value />
+    <txp:rah_repeat_value />
 </txp:rah_repeat>
 <p>Some another cool phrase here.</p>
 <txp:rah_repeat value='<txp:custom_field name="MyCustomFieldName" />' offset="4">
-	<txp:rah_repeat_value />
+    <txp:rah_repeat_value />
 </txp:rah_repeat>
 
 h3. Repeat inside repeat
 
 bc. <txp:rah_repeat value="group1|item1|item2, group2|item1|item2">
-	<ul>
-		<txp:rah_repeat value='<txp:rah_repeat_value />' delimiter="|">
-			<li><txp:rah_repeat_value /></li>
-		</txp:rah_repeat>
-	</ul>
+    <ul>
+        <txp:rah_repeat value='<txp:rah_repeat_value />' delimiter="|">
+            <li><txp:rah_repeat_value /></li>
+        </txp:rah_repeat>
+    </ul>
 </txp:rah_repeat>
 
 Returns two HTML lists:
 
 bc. <ul>
-	<li>group1</li>
-	<li>item1</li>
-	<li>item2</li>
+    <li>group1</li>
+    <li>item1</li>
+    <li>item2</li>
 </ul>
 <ul>
-	<li>group2</li>
-	<li>item1</li>
-	<li>item2</li>
+    <li>group2</li>
+    <li>item1</li>
+    <li>item2</li>
 </ul>
 
 h3. Basic usage of the if_first and the if_last tags
@@ -222,25 +222,25 @@ h3. Basic usage of the if_first and the if_last tags
 With the conditional tags @<txp:rah_repeat_if_first />@ and @<txp:rah_repeat_if_last>@ we can test which value is the first and which is the last.
 
 bc. <txp:rah_repeat value="item1, item2, item3, item4, item5" wraptag="ul" break="li">
-	<txp:rah_repeat_if_first>First: </txp:rah_repeat_if_first>
-	<txp:rah_repeat_if_last>Last: </txp:rah_repeat_if_last>
-	<txp:rah_repeat_value />
+    <txp:rah_repeat_if_first>First: </txp:rah_repeat_if_first>
+    <txp:rah_repeat_if_last>Last: </txp:rah_repeat_if_last>
+    <txp:rah_repeat_value />
 </txp:rah_repeat>
 
 Returns:
 
 bc. <ul>
-	<li>First: item1</li>
-	<li>item2</li>
-	<li>item3</li>
-	<li>item4</li>
-	<li>Last: item5</li>
+    <li>First: item1</li>
+    <li>item2</li>
+    <li>item3</li>
+    <li>item4</li>
+    <li>Last: item5</li>
 </ul>
 
 h3. Remove duplicate values
 
 bc. <txp:rah_repeat duplicates="1" value="foo, bar, bar, foo, bar, bar, foo, foobar">
-	<txp:rah_repeat_value />
+    <txp:rah_repeat_value />
 </txp:rah_repeat>
 
 Returns: @foo, bar, foobar@
@@ -248,7 +248,7 @@ Returns: @foo, bar, foobar@
 h3. Arrange the values from lowest to highest
 
 bc. <txp:rah_repeat value="b, a, c" sort="regular asc">
-	<txp:rah_repeat_value />
+    <txp:rah_repeat_value />
 </txp:rah_repeat>
 
 Returns: @a, b, c@
@@ -256,7 +256,7 @@ Returns: @a, b, c@
 h3. Excluding values
 
 bc. <txp:rah_repeat value="foo, bar, foobar" exclude="foo, bar">
-	<txp:rah_repeat_value />
+    <txp:rah_repeat_value />
 </txp:rah_repeat>
 
 Returns: @foobar@
@@ -266,19 +266,19 @@ h3. Using range attribute
 With the @range@ it's possible to create a range of elements with out specifying each. For example generating list of alphabet (A-z) can be done with range.
 
 bc. <txp:rah_repeat range="a, z, 1">
-	<txp:rah_repeat_value />
+    <txp:rah_repeat_value />
 </txp:rah_repeat>
 
 Or listing number from 0 to 10.
 
 bc. <txp:rah_repeat range="0, 10, 1">
-	<txp:rah_repeat_value />
+    <txp:rah_repeat_value />
 </txp:rah_repeat>
 
 Or values @0@, @2@, @4@, and @6@.
 
 bc. <txp:rah_repeat range="0, 6, 2">
-	<txp:rah_repeat_value />
+    <txp:rah_repeat_value />
 </txp:rah_repeat>
 
 h3. Assign variables with assign attribute
@@ -291,7 +291,7 @@ bc.. <txp:rah_repeat value="JavaScript, jQuery, 1.8.0" assign="language, framewo
 <txp:variable name="framework" />
 
 <txp:if_variable name="version" value="1.8.0">
-	Version is 1.8.0.
+    Version is 1.8.0.
 </txp:if_variable>
 
 h2. Changelog
