@@ -41,9 +41,29 @@
             'assign'     => null,
         ), $atts));
 
-        if ($range && strpos($range, ','))
+        if ($range)
         {
-            $values = call_user_func_array('range', do_list($range));
+            if (strpos($range, ','))
+            {
+                $values = call_user_func_array('range', do_list($range));
+            }
+            else
+            {
+                $values = array();
+
+                foreach (do_list($value) as $v)
+                {
+                    if (strpos($v, '-'))
+                    {
+                        $v = do_list($v, '-');
+                        $values = array_merge($values, (array) range($v[0], $v[1]));
+                    }
+                    else
+                    {
+                        $values[] = $v;
+                    }
+                }
+            }
         }
         else
         {
