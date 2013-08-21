@@ -127,6 +127,12 @@ Example: @escape="1"@ Default: @"0"@
 If set to @1@, the tag returns the iterated value's index number. The index starts from 0.
 Example: @index="1"@ Default: @"0"@
 
+h3. rah_repeat_count
+
+bc. <txp:rah_repeat_count />
+
+Returns the number of items in the last @rah_repeat@ loop. This tag works similarly to the "search_result_count":http://www.textpattern.net/wiki/index.php?title=search_result_count.
+
 h3. rah_repeat_if_first
 
 bc. <txp:rah_repeat value="value1, value2, ...">
@@ -301,11 +307,17 @@ bc. <txp:rah_repeat value="1, 3-6, 9, 13-17" range="1" break=",">
 
 Returns: @1, 3, 4, 5, 6, 13, 14, 15, 16, 17@.
 
+h3. Returns number of items
+
+bc. <txp:rah_repeat value="1, 2, 67, 17" />
+<txp:rah_repeat_count />
+
 h2. Changelog
 
 h3. Version 1.1.0 - upcoming
 
 * Added: value ranges support; @<txp:rah_repeat value="1, 3-6, 13-17" range="1" />@.
+* Added: @<txp:rah_repeat_count />@.
 
 h3. Version 1.0.1 - 2013/05/07
 

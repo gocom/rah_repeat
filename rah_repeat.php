@@ -22,7 +22,7 @@
 
     function rah_repeat($atts, $thing = null)
     {
-        global $rah_repeat, $variable;
+        global $rah_repeat, $rah_repeat_count, $variable;
 
         extract(lAtts(array(
             'form'       => '',
@@ -116,12 +116,12 @@
             }
         }
 
+        $rah_repeat_count = $count = count($values);
+
         if (!$values || ($thing === null && $form === ''))
         {
             return '';
         }
-
-        $count = count($values);
 
         $i = 0;
         $out = array();
@@ -130,6 +130,7 @@
         {
             $i++;
             $parent = $rah_repeat;
+            $parent_count = $rah_repeat_count;
 
             $rah_repeat = array(
                 'string' => $string,
@@ -148,6 +149,7 @@
             }
 
             $rah_repeat = $parent;
+            $rah_repeat_count = $parent_count;
         }
 
         unset($rah_repeat);
@@ -186,6 +188,17 @@
         }
 
         return $rah_repeat['string'];
+    }
+
+/**
+ * Returns number of items in the last loop.
+ *
+ * @return int
+ */
+
+    function rah_repeat_count()
+    {
+        return (int) $rah_repeat_count;
     }
 
 /**
