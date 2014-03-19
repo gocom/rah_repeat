@@ -128,7 +128,6 @@ function rah_repeat($atts, $thing = null)
         $rah_repeat_count = $parent_count;
     }
 
-    unset($rah_repeat);
     return doWrap($out, $wraptag, $break, $class);
 }
 
