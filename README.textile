@@ -1,27 +1,16 @@
 h1. rah_repeat
 
-"Project page":http://rahforum.biz/plugins/rah_repeat | "Packagist":https://packagist.org/packages/rah/rah_repeat | "Twitter":http://twitter.com/gocom | "GitHub":https://github.com/gocom/rah_repeat | "Support forum":http://forum.textpattern.com/viewtopic.php?id=32384 | "Donate":http://rahforum.biz/donate/rah_repeat
+"Download":https://github.com/gocom/rah_repeat/releases | "Packagist":https://packagist.org/packages/rah/rah_repeat | "Twitter":http://twitter.com/gocom | "GitHub":https://github.com/gocom/rah_repeat | "Support forum":http://forum.textpattern.com/viewtopic.php?id=32384 | "Donate":http://rahforum.biz/donate/rah_repeat
 
 Rah_repeat is a "Textpattern CMS":http://www.textpattern.com plugin used for iterations. The plugin splits a provided value to smaller chunks and iterates overs, just like you would expect from a for each loop in any programming language. With the plugin you can turn a simple comma-separated list of values into advanced HTML output, or extract parts of a value as "variables":http://textpattern.net/wiki/index.php?title=variable.
-
-h2. Requirements
-
-Rah_repeat's minimum requirements:
-
-* Textpattern 4.5.0 or newer.
 
 h2. Installing
 
 Using "Composer":http://getcomposer.org:
 
-bc. $ composer require rah/rah_repeat
+bc. $ composer require rah/rah_repeat:*
 
-Or from Textpattern web-based control panel:
-
-# Download the plugin installation code.
-# Copy and paste the installation code into the _Install plugin_ box of your Textpattern Plugin pane.
-# Run the automated setup.
-# After the setup is done, activate the plugin. Done.
+Or "download":https://github.com/gocom/rah_repeat/releases a plugin package.
 
 h2. Basics
 
