@@ -1,25 +1,30 @@
 {
     "name": "rah/rah_repeat",
-    "description": "Iterations plugin for Textpattern",
+    "description": "Iterations plugin for Textpattern CMS",
     "keywords": ["textpattern", "plugin", "iterate", "iterations", "loop"],
-    "homepage": "http://rahforum.biz/plugins/rah_repeat",
+    "homepage": "https://github.com/gocom/rah_repeat",
     "license": "GPL-2.0",
     "type": "textpattern-plugin",
     "authors": [
         {
             "name": "Jukka Svahn",
-            "homepage": "http://rahforum.biz",
+            "homepage": "https://github.com/gocom",
             "role": "Developer"
         }
     ],
     "support": {
         "issues": "https://github.com/gocom/rah_repeat/issues",
-        "forum": "http://forum.textpattern.com/viewtopic.php?id=32384",
         "source": "https://github.com/gocom/rah_repeat"
     },
     "require": {
-        "php": ">=5.2.0",
-        "textpattern/lock": ">=4.4.1",
+        "php": ">=5.6.0",
+        "textpattern/lock": ">=4.6.0",
         "textpattern/installer": "*"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*"
+    },
+    "scripts": {
+        "cs": "./vendor/bin/phpcs"
     }
 }
