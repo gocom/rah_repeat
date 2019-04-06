@@ -301,7 +301,7 @@ bc. <rah::repeat value="1, 2, 67, 17" />
 
 h2. Changelog
 
-h3. Version 2.0.0 - upcoming
+h3. Version 2.0.0 - 2019/04/06
 
 * Fixed @rah::repeat_count@ tag.
 * Registered the template tags, and offers @rah::for@ as an alias.
