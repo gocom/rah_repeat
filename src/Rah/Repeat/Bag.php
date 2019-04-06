@@ -24,7 +24,7 @@
 /**
  * Iterator.
  */
-final class Rah_Repeat_Bag implements Iterator, Countable, ArrayAccess
+final class Rah_Repeat_Bag implements Iterator, Countable
 {
     /**
      * Stores the items.
