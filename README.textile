@@ -18,7 +18,7 @@ bc. <rah::repeat range="min, max, step" value="value1, value2, ..." assign="vari
 
 Rah_repeat's main job is primely iterating over values. Its iteration power can used to create lists or extract subsets of data. The plugin can come very handy when you have a "custom field":https://docs.textpattern.com/tags/custom_field that contains comma-separated list of values which you want to present as a HTML list or extract as individual separate values.
 
-The values you want to iterate over are provided to the tag with the @value@ attribute, each individual subset value separated from each other with the @delimiter@, defaulting to a comma. The current value that is being iterated over can be returned using the @rah_repeat_value@ tag, wrapped in @rah_repeat@ block. The following would generate a HTML list from comma-separated list of @red, blue, green@.
+The values you want to iterate over are provided to the tag with the @value@ attribute, each individual subset value separated from each other with the @delimiter@, defaulting to a comma. The current value that is being iterated over can be returned using the @rah::repeat_value@ tag, wrapped in @rah::repeat@ block. The following would generate a HTML list from comma-separated list of @red, blue, green@.
 
 bc. <rah::repeat value="red, blue, green" wraptag="ul" break="li">
     <rah::repeat_value />
@@ -280,9 +280,9 @@ bc.. <rah::repeat value="JavaScript, jQuery, 1.8.0" assign="language, framework,
 <txp:variable name="language" />
 <txp:variable name="framework" />
 
-<txp:if_variable name="version" value="1.8.0">
+<if::variable name="version" value="1.8.0">
     Version is 1.8.0.
-</txp:if_variable>
+</if::variable>
 
 h3. Using value ranges
 
@@ -303,7 +303,8 @@ h2. Changelog
 
 h3. Version 2.0.0 - upcoming
 
-* Registered the template tags.
+* Fixed @rah::repeat_count@ tag.
+* Registered the template tags, and offers @rah::for@ as an alias.
 * Now requires Textpattern 4.7.0 or newer.
 * Now requires PHP 5.6.0 or newer.
 
