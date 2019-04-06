@@ -200,7 +200,7 @@ final class Rah_Repeat
      */
     public function renderCount()
     {
-        return $this->previous ? count($this->previous) : count($this->current);
+        return count($this->previous);
     }
 
     /**
