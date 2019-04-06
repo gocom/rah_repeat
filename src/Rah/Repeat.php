@@ -1,7 +1,7 @@
 <?php
 
 /*
- * rah_repeat - Iterators tags for Textpattern CMS templates
+ * rah_repeat - Iterator tags for Textpattern CMS templates
  * https://github.com/gocom/rah_repeat
  *
  * Copyright (C) 2019 Jukka Svahn

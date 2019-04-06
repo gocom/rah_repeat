@@ -1,6 +1,6 @@
 {
     "name": "rah/rah_repeat",
-    "description": "Iterations plugin for Textpattern CMS",
+    "description": "Iterator tags for Textpattern CMS templates",
     "keywords": ["textpattern", "plugin", "iterate", "iterations", "loop"],
     "homepage": "https://github.com/gocom/rah_repeat",
     "license": "GPL-2.0",
