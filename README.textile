@@ -1,6 +1,6 @@
 h1. rah_repeat
 
-"Packagist":https://packagist.org/packages/rah/rah_repeat | "Issues":https://github.com/gocom/rah_repeat/issues | "Donate":https://rahforum.biz/donate/rah_repeat
+"Download":https://github.com/gocom/rah_repeat/releases | "Packagist":https://packagist.org/packages/rah/rah_repeat | "Issues":https://github.com/gocom/rah_repeat/issues
 
 Adds iterator template tags to "Textpattern CMS":https://textpattern.com. The plugin splits provided values to smaller chunks and iterates overs, just like you would expect from a for each loop in any programming language. With the plugin you can turn a simple comma-separated list of values into advanced HTML output, or extract parts of a value as "variables":https://docs.textpattern.com/tags/variable.
 
@@ -9,6 +9,8 @@ h2. Install
 Using "Composer":https://getcomposer.org:
 
 bc. $ composer require rah/rah_repeat
+
+Or "download":https://github.com/gocom/rah_repeat/releases an installer package.
 
 h2. Basics
 
