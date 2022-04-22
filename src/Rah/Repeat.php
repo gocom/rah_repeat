@@ -4,7 +4,7 @@
  * rah_repeat - Iterator tags for Textpattern CMS templates
  * https://github.com/gocom/rah_repeat
  *
- * Copyright (C) 2019 Jukka Svahn
+ * Copyright (C) 2022 Jukka Svahn
  *
  * This file is part of rah_repeat.
  *
@@ -29,16 +29,16 @@ final class Rah_Repeat
     /**
      * Stores the current item.
      *
-     * @var Rah_Repeat_Bag
+     * @var Rah_Repeat_Bag|null
      */
-    private $current;
+    private ?Rah_Repeat_Bag $current = null;
 
     /**
      * Stores the previous item.
      *
-     * @var Rah_Repeat_Bag
+     * @var Rah_Repeat_Bag|null
      */
-    private $previous;
+    private ?Rah_Repeat_Bag $previous = null;
 
     /**
      * Constructor.
@@ -61,8 +61,9 @@ final class Rah_Repeat
     /**
      * Creates a list from the given values.
      *
-     * @param  array  $atts  Attributes
-     * @param  string $thing Contained statement
+     * @param array $atts Attributes
+     * @param string $thing Contained statement
+     *
      * @return string User markup
      */
     public function renderList($atts, $thing = null)
@@ -172,7 +173,8 @@ final class Rah_Repeat
     /**
      * Returns the current value.
      *
-     * @param  array  $atts Attributes
+     * @param array $atts Attributes
+     *
      * @return string The value
      */
     public function renderItem($atts)
@@ -182,15 +184,19 @@ final class Rah_Repeat
             'index' => 0,
         ], $atts));
 
-        if ($index) {
-            return $this->current->key();
+        if ($this->current) {
+            if ($index) {
+                return $this->current->key();
+            }
+
+            if ($escape) {
+                return txpspecialchars($this->current->getValue());
+            }
+
+            return $this->current->getValue();
         }
 
-        if ($escape) {
-            return txpspecialchars($this->current->getValue());
-        }
-
-        return $this->current->getValue();
+        return '';
     }
 
     /**
@@ -200,30 +206,36 @@ final class Rah_Repeat
      */
     public function renderCount()
     {
-        return count($this->previous);
+        if ($this->previous) {
+            return count($this->previous);
+        }
+
+        return 0;
     }
 
     /**
      * Checks if the item is the first.
      *
-     * @param  array  $atts  Attributes
-     * @param  string $thing Contained statement
+     * @param array $atts Attributes
+     * @param string $thing Contained statement
+     *
      * @return string User markup
      */
     public function renderIfFirst($atts, $thing = null)
     {
-        return parse(EvalElse($thing, $this->current->isFirst()));
+        return parse(EvalElse($thing, $this->current && $this->current->isFirst()));
     }
 
     /**
      * Checks if the item is the last.
      *
-     * @param  array  $atts  Attributes
-     * @param  string $thing Contained statement
+     * @param array $atts Attributes
+     * @param string $thing Contained statement
+     *
      * @return string User markup
      */
     public function renderIfLast($atts, $thing = null)
     {
-        return parse(EvalElse($thing, $this->current->isLast()));
+        return parse(EvalElse($thing, $this->current && $this->current->isLast()));
     }
 }

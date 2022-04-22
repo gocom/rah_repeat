@@ -4,7 +4,7 @@
  * rah_repeat - Iterator tags for Textpattern CMS templates
  * https://github.com/gocom/rah_repeat
  *
- * Copyright (C) 2019 Jukka Svahn
+ * Copyright (C) 2022 Jukka Svahn
  *
  * This file is part of rah_repeat.
  *
@@ -29,31 +29,32 @@ final class Rah_Repeat_Bag implements Iterator, Countable
     /**
      * Stores the items.
      *
-     * @var array
+     * @var string[]
      */
-    private $items = [];
+    private array $items = [];
 
     /**
      * Stores current count of items.
      *
      * @var int
      */
-    private $count = 0;
+    private int $count = 0;
 
     /**
      * Stores the current index.
      *
      * @var int
      */
-    private $index = 0;
+    private int $index = 0;
 
     /**
      * Constructor.
      *
-     * @param array $items
+     * @param string[] $items
      */
-    public function __construct(array $items)
-    {
+    public function __construct(
+        array $items
+    ) {
         $this->items = $items;
         $this->index = 0;
         $this->count = count($items);
@@ -62,7 +63,7 @@ final class Rah_Repeat_Bag implements Iterator, Countable
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->position = 0;
     }
@@ -70,7 +71,7 @@ final class Rah_Repeat_Bag implements Iterator, Countable
     /**
      * {@inheritdoc}
      */
-    public function current()
+    public function current(): mixed
     {
         return $this;
     }
@@ -78,7 +79,7 @@ final class Rah_Repeat_Bag implements Iterator, Countable
     /**
      * {@inheritdoc}
      */
-    public function key()
+    public function key(): mixed
     {
         return $this->index;
     }
@@ -86,7 +87,7 @@ final class Rah_Repeat_Bag implements Iterator, Countable
     /**
      * {@inheritdoc}
      */
-    public function next()
+    public function next(): void
     {
         $this->index++;
     }
@@ -94,7 +95,7 @@ final class Rah_Repeat_Bag implements Iterator, Countable
     /**
      * {@inheritdoc}
      */
-    public function valid()
+    public function valid(): bool
     {
         return $this->count >= ($this->index + 1);
     }
@@ -102,7 +103,7 @@ final class Rah_Repeat_Bag implements Iterator, Countable
     /**
      * {@inheritdoc}
      */
-    public function count()
+    public function count(): int
     {
         return $this->count;
     }
@@ -112,7 +113,7 @@ final class Rah_Repeat_Bag implements Iterator, Countable
      *
      * @return bool
      */
-    public function isLast()
+    public function isLast(): bool
     {
         return $this->count === ($this->index + 1);
     }
@@ -122,7 +123,7 @@ final class Rah_Repeat_Bag implements Iterator, Countable
      *
      * @return bool
      */
-    public function isFirst()
+    public function isFirst(): bool
     {
         return $this->index === 0;
     }
@@ -132,8 +133,8 @@ final class Rah_Repeat_Bag implements Iterator, Countable
      *
      * @return string
      */
-    public function getValue()
+    public function getValue(): string
     {
-        return $this->items[$this->index];
+        return (string) $this->items[$this->index];
     }
 }
