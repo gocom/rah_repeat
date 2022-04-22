@@ -89,7 +89,7 @@ final class Rah_Repeat
 
         if ($range) {
             if (strpos($range, ',')) {
-                $values = call_user_func_array('range', do_list($range));
+                $values = range(...do_list($range));
             } else {
                 $values = [];
 
