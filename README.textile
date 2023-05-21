@@ -305,7 +305,7 @@ h2. Changelog
 
 h3. Version 3.0.1 - upcoming
 
-* Fixed PHP >= 8.2 deprecation errors.
+* Fixed PHP >= 8.2 compatibility. PHP 8.2 displayed deprecation errors.
 
 h3. Version 3.0.0 - 2022/04/22
 
