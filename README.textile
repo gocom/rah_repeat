@@ -303,7 +303,7 @@ bc. <rah::repeat value="1, 2, 67, 17" />
 
 h2. Changelog
 
-h3. Version 3.0.1 - upcoming
+h3. Version 3.0.1 - 2023/05/21
 
 * Fixed PHP >= 8.2 compatibility. PHP 8.2 displayed deprecation errors.
 
