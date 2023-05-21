@@ -65,7 +65,7 @@ final class Rah_Repeat_Bag implements Iterator, Countable
      */
     public function rewind(): void
     {
-        $this->position = 0;
+        $this->index = 0;
     }
 
     /**
